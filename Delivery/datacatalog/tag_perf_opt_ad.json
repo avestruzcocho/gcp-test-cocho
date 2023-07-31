@@ -1,0 +1,9 @@
+  {
+    "nombre_tabla": "perf_opt",
+    "fecha_creacion": "July 14, 2020 at 1:05:49 AM GMT-5",
+    "tipo_informacion": "Transacciones",
+    "descripcion_tabla": "Tabla con cuota de TDC",
+    "origen": "SAS",
+    "tipo_insumo": "DataSet",
+    "usuario_creador": "BLUADMIN"
+  }

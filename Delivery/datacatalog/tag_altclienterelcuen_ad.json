@@ -1,0 +1,9 @@
+  {
+    "nombre_tabla": "altclienterelcuen_sas_opt",
+    "fecha_creacion": "July 14, 2020 at 12:00:00 AM GMT-5",
+    "tipo_informacion": "Transacciones",
+    "descripcion_tabla": "Contiene la relación de cuenta cliente con empresa",
+    "origen": "SAS",
+    "tipo_insumo": "DataSet",
+    "usuario_creador": "BLUADMIN"
+  }
