@@ -1,9 +1,0 @@
-  {
-    "nombre_tabla": "altclientedim_opt",
-    "fecha_creacion": "January 10, 2023 at 9:56:09 PM GMT-6",
-    "tipo_informacion": "Transacciones",
-    "descripcion_tabla": "Información de cliente DWH - (volumen total de clientes activos inactivos etc)",
-    "origen": "DWH",
-    "tipo_insumo": "DataSet",
-    "usuario_creador": "BLUADMIN"
-  }

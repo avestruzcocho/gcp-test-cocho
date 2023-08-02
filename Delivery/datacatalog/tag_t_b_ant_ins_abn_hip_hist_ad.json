@@ -1,9 +1,0 @@
-  {
-    "nombre_tabla": "t_b_ant_ins_abn_hip_hist",
-    "fecha_creacion": "November 3, 2022 at 6:00:00 PM GMT-6",
-    "tipo_informacion": "Transacciones",
-    "descripcion_tabla": "Contiene las variables para el modelo de abandono de hipoteca historica",
-    "origen": "IIAS",
-    "tipo_insumo": "DataSet",
-    "usuario_creador": "A8053950"
-  }

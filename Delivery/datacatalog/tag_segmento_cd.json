@@ -1,8 +1,0 @@
-  {
-    "nombre_tabla": "segmentocliendim_opt",
-    "frecuencia_actualizacion": "21 de cada mes (+3)",
-    "dia_carga": "27N",
-    "horario_max_carga": "0:15:00",
-    "tipo_carga": "Total",
-    "politica_asociada": "NA"
-  }

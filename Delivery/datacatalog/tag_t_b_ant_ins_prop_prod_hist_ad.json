@@ -1,9 +1,0 @@
-  {
-    "nombre_tabla": "t_b_ant_ins_prop_prod_hist",
-    "fecha_creacion": "August 25, 2023 at 3:56:53 PM GMT-6",
-    "tipo_informacion": "Transacciones",
-    "descripcion_tabla": "Contiene los insumos para el modelo de propensión de productos",
-    "origen": "IIAS",
-    "tipo_insumo": "DataSet",
-    "usuario_creador": "A8039419"
-  }

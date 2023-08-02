@@ -1,9 +1,0 @@
-  {
-    "nombre_tabla": "t_b_ant_codigos_postales",
-    "fecha_creacion": "August 31, 2022 at 3:48:48 PM GMT-5",
-    "tipo_informacion": "Cat",
-    "descripcion_tabla": "Contiene los Códigos Postales de SEPOMEX, su latitud y longitud",
-    "origen": "SEPOMEX",
-    "tipo_insumo": "DataSet",
-    "usuario_creador": "A8053950"
-  }

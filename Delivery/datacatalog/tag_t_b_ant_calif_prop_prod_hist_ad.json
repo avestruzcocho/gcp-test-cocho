@@ -1,9 +1,0 @@
-  {
-    "nombre_tabla": "t_b_ant_calif_prop_prod_hist_vxx",
-    "fecha_creacion": "August 25, 2022 at 3:56:53 PM GMT-5",
-    "tipo_informacion": "Transacciones",
-    "descripcion_tabla": "Contiene las calificaciones para el modelo de Propensión de productos",
-    "origen": "IIAS",
-    "tipo_insumo": "DataSet",
-    "usuario_creador": "A8039419"
-  }

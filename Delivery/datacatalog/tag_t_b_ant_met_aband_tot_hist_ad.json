@@ -1,9 +1,0 @@
-  {
-    "nombre_tabla": "t_b_ant_metricas_abandono_total_hist",
-    "fecha_creacion": "August 25, 2022 at 3:56:53 PM GMT-5",
-    "tipo_informacion": "Transacciones",
-    "descripcion_tabla": "Contiene las metricas historicas para el modelo de abandono Abandono Total",
-    "origen": "IIAS",
-    "tipo_insumo": "DataSet",
-    "usuario_creador": "A8039419"
-  }

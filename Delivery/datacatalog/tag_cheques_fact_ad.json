@@ -1,9 +1,0 @@
-  {
-    "nombre_tabla": "altchequesfact_opt",
-    "fecha_creacion": "July 13, 2020 at 3:17:07 AM GMT-5",
-    "tipo_informacion": "Saldos",
-    "descripcion_tabla": "Tabla de Hechos de Créditos APOLO, contiene saldos financieros y contables por Línea y Crédito",
-    "origen": "DWH",
-    "tipo_insumo": "DataSet",
-    "usuario_creador": "BLUADMIN"
-  }

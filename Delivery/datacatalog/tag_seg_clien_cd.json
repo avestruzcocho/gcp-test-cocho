@@ -1,8 +1,0 @@
-  {
-    "nombre_tabla": "segmentos_clientes_opt",
-    "frecuencia_actualizacion": "Mensual",
-    "dia_carga": "5 H",
-    "horario_max_carga": "5:00:00",
-    "tipo_carga": "Total",
-    "politica_asociada": "NA"
-  }

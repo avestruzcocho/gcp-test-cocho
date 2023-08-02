@@ -1,9 +1,0 @@
-  {
-    "nombre_tabla": "t_b_ant_metricas_abandono_hipo_hist",
-    "fecha_creacion": "August 31, 2022 at 12:05:36 PM GMT-5",
-    "tipo_informacion": "Transacciones",
-    "descripcion_tabla": "Contiene las métricas historica para el modelo de abandono de hipoteca",
-    "origen": "IIAS",
-    "tipo_insumo": "DataSet",
-    "usuario_creador": "A8053950"
-  }

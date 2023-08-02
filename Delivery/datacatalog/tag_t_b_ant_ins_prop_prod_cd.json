@@ -1,8 +1,0 @@
-  {
-    "nombre_tabla": "t_b_ant_ins_prop_prod_vxx",
-    "frecuencia_actualizacion": "Mensual",
-    "dia_carga": "A petición",
-    "horario_max_carga": "A petición",
-    "tipo_carga": "Incremental",
-    "politica_asociada": "NA"
-  }
