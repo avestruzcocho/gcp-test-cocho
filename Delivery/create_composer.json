@@ -1,0 +1,73 @@
+{  
+  "config": {
+    "softwareConfig": {
+      "imageVersion": "composer-2.3.5-airflow-2.5.3",
+      "airflowConfigOverrides": {
+        "celery-worker_concurrency": "12",
+        "secrets-backend": "airflow.providers.google.cloud.secrets.secret_manager.CloudSecretManagerBackend",
+        "core-max_active_runs_per_dag": "32",
+        "logging-logging_level": "DEBUG"
+      },
+      "pypiPackages": {
+        "scikit-learn": "",
+        "apache-beam": "==2.43.0"
+      }
+    },
+    "nodeConfig": {
+      "network": "projects/bnt-network-host-prod/global/networks/bnt-network-host-prod-vpc-01",
+      "subnetwork": "projects/bnt-network-host-prod/regions/us-central1/subnetworks/bnt-network-host-prod-composer",
+      "serviceAccount": "284139992481-compute@developer.gserviceaccount.com",
+      "ipAllocationPolicy": {
+        "clusterSecondaryRangeName": "rs1-pods",
+        "servicesSecondaryRangeName": "rs2-gke"
+      }
+    },
+    "privateEnvironmentConfig": {
+      "enablePrivateEnvironment": true,
+      "privateClusterConfig": {
+        "masterIpv4CidrBlock": "10.33.83.128/28",
+        "masterIpv4ReservedRange": "10.33.83.128/28"
+      },
+      "cloudSqlIpv4CidrBlock": "10.0.0.0/12",
+      "cloudComposerNetworkIpv4CidrBlock": "172.31.245.0/24",
+      "cloudComposerConnectionSubnetwork": "projects/bnt-network-host-prod/regions/us-central1/subnetworks/bnt-network-host-prod-composer",
+      "networkingConfig": {
+        "connectionType": "PRIVATE_SERVICE_CONNECT"
+      }
+    },
+    "webServerNetworkAccessControl": {
+      "allowedIpRanges": [
+        {
+          "value": "0.0.0.0/0",
+          "description": "Allows access from all IPv4 addresses (default value)"
+        },
+        {
+          "value": "::0/0",
+          "description": "Allows access from all IPv6 addresses (default value)"
+        }
+      ]
+    },
+    "workloadsConfig": {
+      "scheduler": {
+        "cpu": 2,
+        "memoryGb": 2,
+        "storageGb": 2,
+        "count": 2
+      },
+      "webServer": {
+        "cpu": 2,
+        "memoryGb": 4,
+        "storageGb": 1
+      },
+      "worker": {
+        "cpu": 2,
+        "memoryGb": 6,
+        "storageGb": 1,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    },
+    "environmentSize": "ENVIRONMENT_SIZE_SMALL",    
+  },
+  "name": "projects/bnt-lakehouse-core-pro/locations/us-central1/environments/bnt-cmp-pro-private"  
+}
