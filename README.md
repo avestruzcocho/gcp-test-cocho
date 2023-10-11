@@ -1,4 +1,4 @@
-# gcp-test-cocho
+# Despliegue en produccion
 
 Para garantizar el despliegue de un ambiente nuevo productivo en Google Cloud Platform (GCP), es importante seguir una serie de mejores prácticas y pasos para asegurar que la implementación sea segura, escalable y confiable. Aquí hay una guía general para ayudarte a garantizar un despliegue exitoso:
 
