@@ -1,6 +1,6 @@
 #bnt-lakehouse-plt-pro
 #ds_b_ant_plt
-CREATE OR REPLACE TABLE `ds_b_ant_plt.t_b_ant_adquisiciones_productos_observadas`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_ant_plt.t_b_ant_adquisiciones_productos_observadas`
 (
 cliente_id INT64 OPTIONS(description="Número de cliente"),
 producto_tipo STRING(6) OPTIONS(description="Tipo de producto"),
@@ -15,10 +15,10 @@ grupo_tipo STRING(14) OPTIONS(description="Tipo grupo")
 PARTITION BY fecha_informacion
 OPTIONS(
 description="Tabla de Fugas Propension Productos",
-labels=[("capa", "plata")]
+labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_ant_plt.t_b_ant_codigos_postales`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_ant_plt.t_b_ant_codigos_postales`
 (
 d_codigo_id INT64 OPTIONS(description="Llave"),
 codpos_long_numero FLOAT64 OPTIONS(description="Latitud del código postal del cliente"),
@@ -26,10 +26,10 @@ codpos_lat_numero FLOAT64 OPTIONS(description="Longitud del código postal del c
 )
 OPTIONS(
 description="Tabla de códigos postales. Latitud y longitud del código postal de los clientes",
-labels=[("capa", "plata")]
+labels=[("capa", "plata"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_ant_plt.t_b_ant_fugas_hipotecario_observadas`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_ant_plt.t_b_ant_fugas_hipotecario_observadas`
 (
 cliente_id INT64 OPTIONS(description="Número de cliente"),
 credito INT64 OPTIONS(description="Número de crédito evaluado"),
@@ -39,10 +39,10 @@ fecha_informacion DATE OPTIONS(description="Fecha de información")
 PARTITION BY fecha_informacion
 OPTIONS(
 description="Tabla de Fugas Abandono Hipotecario",
-labels=[("capa", "plata")]
+labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_ant_plt.t_b_ant_fugas_total_personal_observadas`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_ant_plt.t_b_ant_fugas_total_personal_observadas`
 (
 cliente_id INT64 OPTIONS(description="Número de cliente"),
 fecha_informacion DATE OPTIONS(description="Fecha de información"),
@@ -52,10 +52,10 @@ fecha_abandono DATE OPTIONS(description="Fecha de abandono")
 PARTITION BY fecha_abandono
 OPTIONS(
 description="Tabla de Fugas Abandono Total",
-labels=[("capa", "plata")]
+labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_ant_plt.t_b_ant_ins_abn_hip_hist_vxx`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_ant_plt.t_b_ant_ins_abn_hip_hist_vxx`
 (
 credito_numero INT64 OPTIONS(description="Número de crédito"),
 mes_fecha DATE OPTIONS(description="Fecha de información (mth de month)"),
@@ -88,11 +88,11 @@ score_riesgo_numero FLOAT64 OPTIONS(description="Es el score de riesgos, es un v
 PARTITION BY DATE_TRUNC(mes_fecha, MONTH)
 OPTIONS(
 description="Tabla de clientes listos para ser calificados por el modelo de abandono hipotecario",
-labels=[("capa", "plata")]
+labels=[("capa", "plata"), ("tipo", "produccion")]
 );
 
 
-CREATE OR REPLACE TABLE `ds_b_ant_plt.t_b_ant_modelin`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_ant_plt.t_b_ant_modelin`
 (
 cliente_id INT64 OPTIONS(description="Número de cliente"),
 fecha_informacion INT64 OPTIONS(description="Fecha de información"),
@@ -218,12 +218,12 @@ inicio_sesion_app_movil_numero BIGNUMERIC(38) OPTIONS(description="Número de lo
 PARTITION BY RANGE_BUCKET(fecha_informacion, GENERATE_ARRAY(200000, 209999, 1))
 OPTIONS(
 description="Tabla que contiene la concentración de datos agregados que permiten tener una visión global del cliente. Es un reporte previo a la generación de variables.",
-labels=[("capa", "plata")]
+labels=[("capa", "plata"), ("tipo", "produccion")]
 );
 
 #ds_b_cap_plt
 
-CREATE OR REPLACE TABLE `ds_b_cap_plt.t_b_cap_dispersion_nomina_m`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_cap_plt.t_b_cap_dispersion_nomina_m`
 (
   cliente_id INT64 OPTIONS(description="Número de cliente Altamira"),
   mes_fecha DATE OPTIONS(description="Mes y año de la información"),
@@ -233,13 +233,13 @@ CREATE OR REPLACE TABLE `ds_b_cap_plt.t_b_cap_dispersion_nomina_m`
 PARTITION BY fecha_informacion
 OPTIONS(
   description="Tabla con información de cuentas que reciben dispersiones de nómina, concentrado mensual",
-  labels=[("capa", "plata")]
+  labels=[("capa", "plata"), ("tipo", "produccion")]
 );
 
 
 #ds_b_cli_plt
 
-CREATE OR REPLACE TABLE `ds_b_cli_plt.t_b_cli_datos_complementarios`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_cli_plt.t_b_cli_datos_complementarios`
 (
 cliente_id INT64 OPTIONS(description="Número de cliente Altamira"),
 alta_fecha DATE OPTIONS(description="Fecha de alta del cliente Altamira"),
@@ -255,10 +255,10 @@ fecha_informacion DATE OPTIONS(description="Fecha de información")
 PARTITION BY DATE_TRUNC(fecha_informacion, MONTH)
 OPTIONS(
 description="Tabla de información de clientes activos (Aquellos con por lo menos alguna relación activa de producto) del Banco",
-labels=[("capa", "plata")]
+labels=[("capa", "plata"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_cli_plt.t_b_cli_fusiones`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_cli_plt.t_b_cli_fusiones`
 (
 clie_fusio_id INT64 OPTIONS(description="Número de cliente que se fusiona"),
 clie_perm_numero NUMERIC(8) OPTIONS(description="Número de cliente que permanece tras una fusión"),
@@ -267,10 +267,10 @@ fecha_informacion DATE OPTIONS(description="Fecha de información")
 PARTITION BY DATE_TRUNC(fecha_informacion, MONTH)
 OPTIONS(
 description="Tabla de relación de último cliente que permanece despues de la fusión",
-labels=[("capa", "plata")]
+labels=[("capa", "plata"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_cli_plt.t_b_cli_productos`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_cli_plt.t_b_cli_productos`
 (
 cliente_id INT64 OPTIONS(description="Número de cliente del producto"),
 cuenta_id INT64 OPTIONS(description="Número de cuenta Altamira"),
@@ -282,11 +282,11 @@ fecha_informacion DATE OPTIONS(description="Fecha de la información")
 PARTITION BY DATE_TRUNC(fecha_informacion, MONTH)
 OPTIONS(
 description="Tabla de información de la relación de cuenta cliente con empresa",
-labels=[("capa", "plata")]
+labels=[("capa", "plata"), ("tipo", "produccion")]
 );
 
 
-CREATE OR REPLACE TABLE `ds_b_cli_plt.t_b_cli_segmentos`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_cli_plt.t_b_cli_segmentos`
 (
 cliente_id INT64 OPTIONS(description="Número de cliente Altamira"),
 segmento_nombre STRING(3) OPTIONS(description="Descripción segmento del cliente"),
@@ -296,13 +296,13 @@ fecha_informacion DATE OPTIONS(description="Fecha de información")
 PARTITION BY DATE_TRUNC(fecha_informacion, MONTH)
 OPTIONS(
 description="Tabla de información mensual e historica de segmentos de clientes",
-labels=[("capa", "plata")]
+labels=[("capa", "plata"), ("tipo", "produccion")]
 );
 
 
 #ds_b_col_plt
 
-CREATE OR REPLACE TABLE `ds_b_col_plt.t_b_col_tdc_mensual`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_col_plt.t_b_col_tdc_mensual`
 (
   ambs_acct_id STRING(20) OPTIONS(description="Número de cuenta"),
   sdo_total_fin_monto FLOAT64 OPTIONS(description="Saldo total al cierre, incluye promociones"),
@@ -316,13 +316,13 @@ CREATE OR REPLACE TABLE `ds_b_col_plt.t_b_col_tdc_mensual`
 PARTITION BY DATE_TRUNC(fecha_informacion, MONTH)
 OPTIONS(
   description="Tabla de perfil de Pago tarjeta de credito",
-  labels=[("capa", "plata")]
+  labels=[("capa", "plata"), ("tipo", "produccion")]
 );
 
 
 #ds_b_dwh_cap_plt
 
-CREATE OR REPLACE TABLE `ds_b_dwh_cap_plt.t_b_dwh_cap_saldo_vista`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_dwh_cap_plt.t_b_dwh_cap_saldo_vista`
 (
   cuenta_id STRING(19) OPTIONS(description="Cuenta de cheques, llave única en sistema Altamira"),
   fechaultmov_date DATE OPTIONS(description=" Fecha del último movimiento"),
@@ -334,13 +334,13 @@ CREATE OR REPLACE TABLE `ds_b_dwh_cap_plt.t_b_dwh_cap_saldo_vista`
 PARTITION BY DATE_TRUNC(pdimtiempo_fecha, MONTH)
 OPTIONS(
   description="Tabla de Hechos de Créditos APOLO, contiene saldos financieros y contables por Línea y Crédito",
-  labels=[("capa", "plata")]
+  labels=[("capa", "oro"), ("tipo", "produccion")]
 );
 
 
 #ds_b_dwh_cat_plt
 
-CREATE OR REPLACE TABLE `ds_b_dwh_cat_plt.t_b_dwh_cat_segmentos`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_dwh_cat_plt.t_b_dwh_cat_segmentos`
 (
   pdimsegmento_numero NUMERIC(9) OPTIONS(description="Llave subrogada primaria de la tabla SegmentoDim"),
   bancagrup_tipo STRING(20) OPTIONS(description="Clave de Banca o Área de Negocio (ya no está en uso)"),
@@ -354,12 +354,12 @@ CREATE OR REPLACE TABLE `ds_b_dwh_cat_plt.t_b_dwh_cat_segmentos`
 )
 OPTIONS(
   description="Tabla de catálogo que contiene los atributos de la relacion Cliente - Segmento",
-  labels=[("capa", "plata")]
+  labels=[("capa", "plata"), ("tipo", "produccion")]
 );
 
 #ds_b_dwh_cli_plt
 
-CREATE OR REPLACE TABLE `ds_b_dwh_cli_plt.t_b_dwh_cli_datos_basicos`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_dwh_cli_plt.t_b_dwh_cli_datos_basicos`
 (
   numerocif_id INT64,
   pdimcliente_id NUMERIC,
@@ -372,14 +372,11 @@ CREATE OR REPLACE TABLE `ds_b_dwh_cli_plt.t_b_dwh_cli_datos_basicos`
   estadoclav_id NUMERIC,
   ocupacionpmclav_id NUMERIC,
   ocupacionpfclav_id NUMERIC
- )
-  OPTIONS(
-  labels=[("capa", "plata")]
 );
 
 #ds_b_rie_plt
 
-CREATE OR REPLACE TABLE `ds_b_rie_plt.t_b_rie_ingreso_cliente`
+CREATE OR REPLACE TABLE `bnt-lakehouse-plt-pro.ds_b_rie_plt.t_b_rie_ingreso_cliente`
 (
   ing_mensual_monto FLOAT64 OPTIONS(description="Ingreso mensual estimado productivo"),
   cliente_id INT64 OPTIONS(description="Número de cliente"),
@@ -390,6 +387,5 @@ CREATE OR REPLACE TABLE `ds_b_rie_plt.t_b_rie_ingreso_cliente`
 PARTITION BY DATE_TRUNC(fecha_informacion, MONTH)
 OPTIONS(
   description="Tabla de Cliente-Ingresos.Es el estimador de la base de ingresos",
-  labels=[("capa", "plata")]
+  labels=[("capa", "plata"), ("tipo", "produccion")]
 );
-
