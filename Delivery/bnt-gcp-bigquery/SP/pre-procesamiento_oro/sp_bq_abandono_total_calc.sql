@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE `bnt-lakehouse-oro-pro.ds_b_ant_oro.sp_bq_abandono_total_calc`(BMONTH DATE, PROJECT_ID_PLT STRING)
+CREATE OR REPLACE PROCEDURE `ds_b_ant_oro.sp_bq_abandono_total_calc`(BMONTH DATE, PROJECT_ID_PLT STRING)
 BEGIN
 
 ---------------------------------------------------------------   PASO 1   -------------------------------------------------------
