@@ -141,5 +141,3 @@ CREATE SCHEMA `bnt-lakehouse-brc-pro.temp`
     description = 'DESCRIPTION',
     labels = [('ambiente','produccion')],
     location = 'us');   
-  
-  
