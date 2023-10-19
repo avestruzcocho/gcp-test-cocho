@@ -1,6 +1,6 @@
 #bnt-lakehouse-oro-pro
 #ds_b_ant_oro
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.a_predicciones_propension_prod`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.a_predicciones_propension_prod`
 (
   cliente_id INT64,
   fecha_informacion DATE,
@@ -11,7 +11,7 @@ CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.a_predicciones_prope
   prediccion_fondos FLOAT64
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_ant_prop_prod_calif_full`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_ant_prop_prod_calif_full`
 (
 cliente_id INT64,
 fecha_informacion DATE,
@@ -22,7 +22,7 @@ prediccion_cn FLOAT64,
 prediccion_fondos FLOAT64
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_abandono_hip_hist_vxx`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_abandono_hip_hist_vxx`
 (
 cliente_id INT64,
 credito_numero INT64,
@@ -34,10 +34,10 @@ prediccion_umbral INT64
 PARTITION BY obs
 OPTIONS(
 description="Contiene las calificaciones para el modelo de abandono de hipoteca",
-labels=[("capa", "oro")]
+labels=[("capa_oro", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_abandono_hip_vxx`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_abandono_hip_vxx`
 (
 cliente_id INT64,
 credito_numero INT64,
@@ -49,10 +49,10 @@ prediccion_umbral INT64
 PARTITION BY obs
 OPTIONS(
 description="Contiene las calificaciones para el modelo de abandono de hipoteca",
-labels=[("capa", "oro")]
+labels=[("capa_oro", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_abandono_total_hist_vxx`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_abandono_total_hist_vxx`
 (
 cliente_id INT64,
 fecha_informacion DATE,
@@ -62,10 +62,10 @@ prediccion_umbral INT64
 PARTITION BY fecha_informacion
 OPTIONS(
 description="Contiene las calificaciones para el modelo de abandono Abandono Total",
-labels=[("capa", "oro")]
+labels=[("capa_oro", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_abandono_total_vxx`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_abandono_total_vxx`
 (
 cliente_id INT64,
 fecha_informacion DATE,
@@ -75,11 +75,11 @@ prediccion_umbral INT64
 PARTITION BY fecha_informacion
 OPTIONS(
 description="Contiene las calificaciones para el modelo de abandono Abandono Total",
-labels=[("capa", "oro")]
+labels=[("capa_oro", "produccion")]
 );
 
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_prop_prod_hist_vxx`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_prop_prod_hist_vxx`
 (
 cliente_id INT64,
 fecha_informacion DATE,
@@ -97,10 +97,10 @@ prediccion_fondos_umbral INT64
 PARTITION BY fecha_informacion
 OPTIONS(
 description="Contiene las calificaciones para el modelo de Propensión de productos",
-labels=[("capa", "oro")]
+labels=[("capa_oro", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_prop_prod_vxx`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_prop_prod_vxx`
 (
 cliente_id INT64,
 fecha_informacion DATE,
@@ -118,10 +118,10 @@ prediccion_fondos_umbral INT64
 PARTITION BY fecha_informacion
 OPTIONS(
 description="Contiene las calificaciones para el modelo de Propensión de productos",
-labels=[("capa", "oro")]
+labels=[("capa_oro", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_propension_multi_prod_hist_vxx`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_calif_propension_multi_prod_hist_vxx`
 (
 num_clie INT64 OPTIONS(description="Númedo de cliente"),
 fecha_informacion INT64 OPTIONS(description="Mes al que pertenece la información"),
@@ -133,11 +133,11 @@ score_fondos FLOAT64 OPTIONS(description="Score de propensión de fondos de inve
 )
 OPTIONS(
 description="Tabla score de salida del modelo de abandono total",
-labels=[("capa", "oro")]
+labels=[("capa_oro", "produccion")]
 );
 
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_entrenado_ins_prop_prod_vxx`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_entrenado_ins_prop_prod_vxx`
 (
 cliente_id INT64,
 fecha_informacion INT64,
@@ -329,7 +329,7 @@ mes_fecha_12 INT64
 );
 
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_entrenado_prop_prod_hist`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_entrenado_prop_prod_hist`
 (
 cliente_id INT64 OPTIONS(description="Número de cliente"),
 fecha_informacion INT64 OPTIONS(description="Fecha de información"),
@@ -526,7 +526,7 @@ target_fondos INT64
 );
 
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_entreno_sin_procesar_limpieza1_prop_prod`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_entreno_sin_procesar_limpieza1_prop_prod`
 (
 cliente_id INT64,
 fecha_obs DATE,
@@ -634,7 +634,7 @@ depvar_fondos_new INT64
 );
 
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_entreno_sin_procesar_prop_prod`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_entreno_sin_procesar_prop_prod`
 (
 cliente_id INT64 OPTIONS(description="Número de cliente"),
 fecha_informacion STRING OPTIONS(description="Fecha de información"),
@@ -742,7 +742,1097 @@ depvar_fondos_new INT64,
 fecha_obs DATE
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_ins_abn_hip_hist`
+
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_importancia_caracteristicas_abandono_hipo_hist`
+(
+fecha DATE,
+version STRING,
+consultas_buro_3m_numero FLOAT64,
+contable_ultimo_balance_saldo FLOAT64,
+tasa_cobrada_pct FLOAT64,
+antig_credito_meses_numero FLOAT64,
+consultas_buro_6m_numero FLOAT64,
+score_bc_monto FLOAT64,
+monto_max_tdc_offus_monto FLOAT64,
+broker_bandera FLOAT64,
+prom_voluntad_pago_7m_monto FLOAT64,
+pct_ltv_cierre_monto FLOAT64,
+cp_longitud_numero FLOAT64,
+garantia_monto FLOAT64,
+pct_ltv_monto FLOAT64,
+credito_monto FLOAT64,
+plazo_remanente_credito_numero FLOAT64,
+aforo_monto FLOAT64,
+antig_cliente_meses_numero FLOAT64,
+cp_latitud_numero FLOAT64,
+score_riesgo_numero FLOAT64,
+sdoprom_mens_vista_monto FLOAT64,
+pago_monto FLOAT64,
+aniosresdom_desc FLOAT64,
+consultas_buro_12m_numero FLOAT64,
+pago_exigible_monto FLOAT64,
+retiros_nom_monto FLOAT64,
+linea_max_tdc_monto FLOAT64,
+saldo_total_hipo_offus_monto FLOAT64,
+meses_antig_tdc_numero FLOAT64,
+modalidad_70078 FLOAT64,
+antig_emisora_meses_numero FLOAT64,
+tdc_offus_numero FLOAT64,
+total_credito_personal_offus_monto FLOAT64,
+uso_mensual_tdc_pct FLOAT64,
+depositos_nom_monto FLOAT64,
+nivel_riesgo_otro FLOAT64,
+max_hipo_offus_monto FLOAT64,
+saldo_total_auto_offus_monto FLOAT64,
+saldo_total_cierre_tdc_monto FLOAT64,
+plazo_total_credito_meses_numero FLOAT64,
+fact_total_tdc_monto FLOAT64,
+txn_retiros_nom_numero FLOAT64,
+max_auto_offus_monto FLOAT64,
+nivel_riesgo_muybajo FLOAT64,
+broker_sinbroker FLOAT64,
+txn_depositos_nom_numero FLOAT64,
+saldo_total_auto_monto FLOAT64,
+max_num_pagos_vencidos_numero FLOAT64,
+txn_retiros_nom_offus_numero FLOAT64,
+tenencia_vista_bandera FLOAT64,
+tipo_ingreso_asalariado FLOAT64,
+estadociv_s FLOAT64,
+modalidad_71000 FLOAT64,
+total_auto_offus_numero FLOAT64,
+consultas_buro_1m_numero FLOAT64,
+sexo_tipo FLOAT64,
+tipoperclav_251 FLOAT64,
+broker_sinergiasocs_a_dec_v_ FLOAT64,
+tipo_ingreso_a FLOAT64,
+broker_fsgbrokers_a_dec_v_ FLOAT64,
+modalidad_70013 FLOAT64,
+nivelestclav_8 FLOAT64,
+tenencia_seguros_bandera FLOAT64,
+broker_otro FLOAT64,
+tipo_ingreso_noasalariado FLOAT64,
+tipo_ingreso_noaplica FLOAT64,
+nivelestclav_6 FLOAT64,
+modalidad_70081 FLOAT64,
+tipo_ingreso_otro FLOAT64,
+modalidad_otro FLOAT64,
+modalidad_70137 FLOAT64,
+nivelestclav_otro FLOAT64,
+modalidad_70139 FLOAT64,
+nivel_riesgo_bajo FLOAT64,
+modalidad_70166 FLOAT64,
+nivelestclav_4 FLOAT64,
+nivelestclav_5 FLOAT64,
+tipoperclav_252 FLOAT64,
+estadociv_otro FLOAT64,
+estadociv_c FLOAT64,
+score_bc_bandera FLOAT64,
+tipoperclav_otro INT64
+);
+
+
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_importancia_caracteristicas_abandono_total_hist`
+(
+fecha DATE,
+version STRING,
+antiguedad INT64,
+meses_ult_dispersion INT64,
+fam_bxi INT64,
+fam_nomina INT64,
+fam_casabolsa INT64,
+fam_credito INT64,
+fam_plazo INT64,
+fam_seguros INT64,
+fam_sociedades INT64,
+fam_tdc INT64,
+fam_vista INT64,
+n_productos INT64,
+max_n_productos INT64,
+meses_ult_mov_vista INT64,
+saldo INT64,
+months_ult_credito INT64,
+antig_tdc INT64,
+saldo_eq_tdc INT64,
+cancelada_tdc INT64,
+castigaga_tdc INT64,
+cancelada_antes_tdc INT64,
+castigada_antes_tdc INT64,
+edad INT64,
+vista_ceros_3_meses_con_saldo_0 INT64,
+vista_ceros_6_meses_con_saldo_0 INT64,
+vista_ceros_9_meses_o_mas_de_saldo_0 INT64,
+vista_ceros_saldo_normal INT64,
+bajon_saldo_bajon_saldo_ahora INT64,
+bajon_saldo_bajon_saldo_reciente INT64,
+bajon_saldo_saldo_bajo INT64,
+bajon_saldo_saldo_normal INT64,
+saldo_inactivo_saldo_igual_3m INT64,
+saldo_inactivo_saldo_igual_6m INT64,
+saldo_inactivo_saldo_normal INT64,
+saldo_r1 INT64,
+saldo_r3 INT64,
+saldo_r36 INT64
+);
+
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_importancia_caracteristicas_propension_prod_auto_hist`
+(
+fecha DATE,
+version STRING,
+genero_femenino_bandera INT64,
+edad_cliente_anios_numero INT64,
+antig_cliente_meses_numero INT64,
+tenencia_auto_bandera INT64,
+tenencia_bxi_bandera INT64,
+tenencia_casa_bolsa_bandera INT64,
+tenencia_credito_nomina_bandera INT64,
+tenencia_hipo_bandera INT64,
+tenencia_mesa_dinero_bandera INT64,
+tenencia_credito_personal_bandera INT64,
+tenencia_pagare_plazo_bandera INT64,
+tenencia_seguros_bandera INT64,
+tenencia_fondos_inversion_bandera INT64,
+tenencia_tdc_bandera INT64,
+tenencia_vista_bandera INT64,
+total_tenencia_productos_numero INT64,
+nom_3m_bandera INT64,
+inicio_sesion_app_movil_numero INT64,
+sdoprom_mens_fondos_inversion_monto INT64,
+sdoprom_trim_casa_bolsa_monto INT64,
+sdoprom_mens_mesa_dinero_monto INT64,
+sdoprom_mens_pagare_plazo_monto INT64,
+sdoprom_mens_vista_monto INT64,
+txn_depositos_nom_numero INT64,
+txn_retiros_nom_numero INT64,
+depositos_nom_monto INT64,
+retiros_nom_monto INT64,
+fact_total_tdc_monto INT64,
+gastos_lujos_monto INT64,
+fact_luxury_monto INT64,
+gastos_transporte_monto INT64,
+fact_transporte_monto INT64,
+txn_servicios_infantiles_numero INT64,
+fact_servicios_monto INT64,
+gastos_personales_monto INT64,
+fact_gastos_personales_monto INT64,
+gastos_entretenimiento_monto INT64,
+fact_entretenimiento_monto INT64,
+gastos_otros_monto INT64,
+fact_otros_monto INT64,
+gastos_despensa_monto INT64,
+fact_despensa_monto INT64,
+score_bc_bandera INT64,
+score_bc_monto INT64,
+saldo_total_hipo_offus_monto INT64,
+saldo_total_auto_offus_monto INT64,
+total_hipo_offus_numero INT64,
+saldo_total_tdc_offus_monto INT64,
+credito_personal_offus_numero INT64,
+max_credito_personal_offus_monto INT64,
+total_auto_offus_numero INT64,
+total_credito_personal_offus_monto INT64,
+uso_credito_personal_offus_monto INT64,
+max_auto_offus_monto INT64,
+monto_max_tdc_offus_monto INT64,
+uso_tdc_offus_monto INT64,
+tdc_offus_numero INT64,
+max_hipo_offus_monto INT64,
+nom_monto INT64,
+codpos_long_numero INT64,
+codpos_lat_numero INT64,
+medio_contacto INT64,
+ing_mensual_monto INT64,
+retrospectivo_bandera INT64,
+aniosresdom_desc INT64,
+reus_bandera INT64,
+prom_sp6 INT64,
+prom_sp5 INT64,
+prom_sp4 INT64,
+prom_sp3 INT64,
+prom_sp2 INT64,
+prom_fact6 INT64,
+prom_fact5 INT64,
+prom_fact4 INT64,
+prom_fact3 INT64,
+prom_fact2 INT64,
+prom_md6 INT64,
+prom_md5 INT64,
+prom_md4 INT64,
+prom_md3 INT64,
+prom_md2 INT64,
+prom_mr6 INT64,
+prom_mr5 INT64,
+prom_mr4 INT64,
+prom_mr3 INT64,
+prom_mr2 INT64,
+porc_sp1 INT64,
+porc_sp2 INT64,
+porc_sp3 INT64,
+porc_sp4 INT64,
+porc_sp5 INT64,
+segmento_nombre_a INT64,
+segmento_nombre_aa INT64,
+segmento_nombre_b INT64,
+segmento_nombre_c INT64,
+segmento_nombre_d INT64,
+segmento_nombre_dc INT64,
+segmento_nombre_e INT64,
+segmento_nombre_ea INT64,
+segmento_nombre_eb INT64,
+segmento_nombre_ec INT64,
+segmento_nombre_f INT64,
+segmento_nombre_fa INT64,
+segmento_nombre_fb INT64,
+segmento_nombre_fc INT64,
+segmento_nombre_g INT64,
+segmento_nombre_ga INT64,
+segmento_nombre_gb INT64,
+segmento_nombre_gc INT64,
+segmento_nombre_h INT64,
+segmento_nombre_i INT64,
+segmento_nombre_ia INT64,
+segmento_nombre_ib INT64,
+segmento_nombre_j INT64,
+segmento_nombre_otro INT64,
+segmentogrupclav_numero_otro INT64,
+segmentogrupclav_numero_personal INT64,
+segmentogrupclav_numero_preferente INT64,
+segmentogrupclav_numero_pymes INT64,
+persona_tipo_pf INT64,
+persona_tipo_pfae INT64,
+estudios_desc_carrera_tecnica INT64,
+estudios_desc_licenciatura_profesional INT64,
+estudios_desc_otro INT64,
+estudios_desc_postgrado_maestria_doctorado INT64,
+estudios_desc_preparatoria INT64,
+estudios_desc_primaria INT64,
+estudios_desc_secundaria INT64,
+estudios_desc_sin_escolaridad INT64,
+metodo_afore INT64,
+metodo_buro_hrc INT64,
+metodo_depositos INT64,
+metodo_modelo_saldos INT64,
+metodo_nomina INT64,
+metodo_nomina_y_depositos INT64,
+metodo_otro INT64,
+estadociv_tipo_c INT64,
+estadociv_tipo_otro INT64,
+estadociv_tipo_s INT64,
+estadociv_tipo_u INT64,
+estadoclav_id_ags INT64,
+estadoclav_id_bc INT64,
+estadoclav_id_bcs INT64,
+estadoclav_id_cam INT64,
+estadoclav_id_cdmx INT64,
+estadoclav_id_chin INT64,
+estadoclav_id_chis INT64,
+estadoclav_id_coah INT64,
+estadoclav_id_col INT64,
+estadoclav_id_dgo INT64,
+estadoclav_id_gro INT64,
+estadoclav_id_gto INT64,
+estadoclav_id_hgo INT64,
+estadoclav_id_jal INT64,
+estadoclav_id_mex INT64,
+estadoclav_id_mich INT64,
+estadoclav_id_mor INT64,
+estadoclav_id_nay INT64,
+estadoclav_id_nl INT64,
+estadoclav_id_oax INT64,
+estadoclav_id_otro INT64,
+estadoclav_id_pue INT64,
+estadoclav_id_q_roo INT64,
+estadoclav_id_qro INT64,
+estadoclav_id_sin INT64,
+estadoclav_id_slp INT64,
+estadoclav_id_son INT64,
+estadoclav_id_tab INT64,
+estadoclav_id_tamps INT64,
+estadoclav_id_tlax INT64,
+estadoclav_id_ver INT64,
+estadoclav_id_yuc INT64,
+estadoclav_id_zac INT64,
+mes_fecha_01 INT64,
+mes_fecha_02 INT64,
+mes_fecha_03 INT64,
+mes_fecha_04 INT64,
+mes_fecha_05 INT64,
+mes_fecha_06 INT64,
+mes_fecha_07 INT64,
+mes_fecha_08 INT64,
+mes_fecha_09 INT64,
+mes_fecha_10 INT64,
+mes_fecha_11 INT64,
+mes_fecha_12 INT64
+);
+
+
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_importancia_caracteristicas_propension_prod_cn_hist`
+(
+fecha DATE,
+version STRING,
+genero_femenino_bandera INT64,
+edad_cliente_anios_numero INT64,
+antig_cliente_meses_numero INT64,
+tenencia_auto_bandera INT64,
+tenencia_bxi_bandera INT64,
+tenencia_casa_bolsa_bandera INT64,
+tenencia_credito_nomina_bandera INT64,
+tenencia_hipo_bandera INT64,
+tenencia_mesa_dinero_bandera INT64,
+tenencia_credito_personal_bandera INT64,
+tenencia_pagare_plazo_bandera INT64,
+tenencia_seguros_bandera INT64,
+tenencia_fondos_inversion_bandera INT64,
+tenencia_tdc_bandera INT64,
+tenencia_vista_bandera INT64,
+total_tenencia_productos_numero INT64,
+nom_3m_bandera INT64,
+inicio_sesion_app_movil_numero INT64,
+sdoprom_mens_fondos_inversion_monto INT64,
+sdoprom_trim_casa_bolsa_monto INT64,
+sdoprom_mens_mesa_dinero_monto INT64,
+sdoprom_mens_pagare_plazo_monto INT64,
+sdoprom_mens_vista_monto INT64,
+txn_depositos_nom_numero INT64,
+txn_retiros_nom_numero INT64,
+depositos_nom_monto INT64,
+retiros_nom_monto INT64,
+fact_total_tdc_monto INT64,
+gastos_lujos_monto INT64,
+fact_luxury_monto INT64,
+gastos_transporte_monto INT64,
+fact_transporte_monto INT64,
+txn_servicios_infantiles_numero INT64,
+fact_servicios_monto INT64,
+gastos_personales_monto INT64,
+fact_gastos_personales_monto INT64,
+gastos_entretenimiento_monto INT64,
+fact_entretenimiento_monto INT64,
+gastos_otros_monto INT64,
+fact_otros_monto INT64,
+gastos_despensa_monto INT64,
+fact_despensa_monto INT64,
+score_bc_bandera INT64,
+score_bc_monto INT64,
+saldo_total_hipo_offus_monto INT64,
+saldo_total_auto_offus_monto INT64,
+total_hipo_offus_numero INT64,
+saldo_total_tdc_offus_monto INT64,
+credito_personal_offus_numero INT64,
+max_credito_personal_offus_monto INT64,
+total_auto_offus_numero INT64,
+total_credito_personal_offus_monto INT64,
+uso_credito_personal_offus_monto INT64,
+max_auto_offus_monto INT64,
+monto_max_tdc_offus_monto INT64,
+uso_tdc_offus_monto INT64,
+tdc_offus_numero INT64,
+max_hipo_offus_monto INT64,
+nom_monto INT64,
+codpos_long_numero INT64,
+codpos_lat_numero INT64,
+medio_contacto INT64,
+ing_mensual_monto INT64,
+retrospectivo_bandera INT64,
+aniosresdom_desc INT64,
+reus_bandera INT64,
+prom_sp6 INT64,
+prom_sp5 INT64,
+prom_sp4 INT64,
+prom_sp3 INT64,
+prom_sp2 INT64,
+prom_fact6 INT64,
+prom_fact5 INT64,
+prom_fact4 INT64,
+prom_fact3 INT64,
+prom_fact2 INT64,
+prom_md6 INT64,
+prom_md5 INT64,
+prom_md4 INT64,
+prom_md3 INT64,
+prom_md2 INT64,
+prom_mr6 INT64,
+prom_mr5 INT64,
+prom_mr4 INT64,
+prom_mr3 INT64,
+prom_mr2 INT64,
+porc_sp1 INT64,
+porc_sp2 INT64,
+porc_sp3 INT64,
+porc_sp4 INT64,
+porc_sp5 INT64,
+segmento_nombre_a INT64,
+segmento_nombre_aa INT64,
+segmento_nombre_b INT64,
+segmento_nombre_c INT64,
+segmento_nombre_d INT64,
+segmento_nombre_dc INT64,
+segmento_nombre_e INT64,
+segmento_nombre_ea INT64,
+segmento_nombre_eb INT64,
+segmento_nombre_ec INT64,
+segmento_nombre_f INT64,
+segmento_nombre_fa INT64,
+segmento_nombre_fb INT64,
+segmento_nombre_fc INT64,
+segmento_nombre_g INT64,
+segmento_nombre_ga INT64,
+segmento_nombre_gb INT64,
+segmento_nombre_gc INT64,
+segmento_nombre_h INT64,
+segmento_nombre_i INT64,
+segmento_nombre_ia INT64,
+segmento_nombre_ib INT64,
+segmento_nombre_j INT64,
+segmento_nombre_otro INT64,
+segmentogrupclav_numero_otro INT64,
+segmentogrupclav_numero_personal INT64,
+segmentogrupclav_numero_preferente INT64,
+segmentogrupclav_numero_pymes INT64,
+persona_tipo_pf INT64,
+persona_tipo_pfae INT64,
+estudios_desc_carrera_tecnica INT64,
+estudios_desc_licenciatura_profesional INT64,
+estudios_desc_otro INT64,
+estudios_desc_postgrado_maestria_doctorado INT64,
+estudios_desc_preparatoria INT64,
+estudios_desc_primaria INT64,
+estudios_desc_secundaria INT64,
+estudios_desc_sin_escolaridad INT64,
+metodo_afore INT64,
+metodo_buro_hrc INT64,
+metodo_depositos INT64,
+metodo_modelo_saldos INT64,
+metodo_nomina INT64,
+metodo_nomina_y_depositos INT64,
+metodo_otro INT64,
+estadociv_tipo_c INT64,
+estadociv_tipo_otro INT64,
+estadociv_tipo_s INT64,
+estadociv_tipo_u INT64,
+estadoclav_id_ags INT64,
+estadoclav_id_bc INT64,
+estadoclav_id_bcs INT64,
+estadoclav_id_cam INT64,
+estadoclav_id_cdmx INT64,
+estadoclav_id_chin INT64,
+estadoclav_id_chis INT64,
+estadoclav_id_coah INT64,
+estadoclav_id_col INT64,
+estadoclav_id_dgo INT64,
+estadoclav_id_gro INT64,
+estadoclav_id_gto INT64,
+estadoclav_id_hgo INT64,
+estadoclav_id_jal INT64,
+estadoclav_id_mex INT64,
+estadoclav_id_mich INT64,
+estadoclav_id_mor INT64,
+estadoclav_id_nay INT64,
+estadoclav_id_nl INT64,
+estadoclav_id_oax INT64,
+estadoclav_id_otro INT64,
+estadoclav_id_pue INT64,
+estadoclav_id_q_roo INT64,
+estadoclav_id_qro INT64,
+estadoclav_id_sin INT64,
+estadoclav_id_slp INT64,
+estadoclav_id_son INT64,
+estadoclav_id_tab INT64,
+estadoclav_id_tamps INT64,
+estadoclav_id_tlax INT64,
+estadoclav_id_ver INT64,
+estadoclav_id_yuc INT64,
+estadoclav_id_zac INT64,
+mes_fecha_01 INT64,
+mes_fecha_02 INT64,
+mes_fecha_03 INT64,
+mes_fecha_04 INT64,
+mes_fecha_05 INT64,
+mes_fecha_06 INT64,
+mes_fecha_07 INT64,
+mes_fecha_08 INT64,
+mes_fecha_09 INT64,
+mes_fecha_10 INT64,
+mes_fecha_11 INT64,
+mes_fecha_12 INT64
+);
+
+
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_importancia_caracteristicas_propension_prod_fondos_hist`
+(
+fecha DATE,
+version STRING,
+genero_femenino_bandera INT64,
+edad_cliente_anios_numero INT64,
+antig_cliente_meses_numero INT64,
+tenencia_auto_bandera INT64,
+tenencia_bxi_bandera INT64,
+tenencia_casa_bolsa_bandera INT64,
+tenencia_credito_nomina_bandera INT64,
+tenencia_hipo_bandera INT64,
+tenencia_mesa_dinero_bandera INT64,
+tenencia_credito_personal_bandera INT64,
+tenencia_pagare_plazo_bandera INT64,
+tenencia_seguros_bandera INT64,
+tenencia_fondos_inversion_bandera INT64,
+tenencia_tdc_bandera INT64,
+tenencia_vista_bandera INT64,
+total_tenencia_productos_numero INT64,
+nom_3m_bandera INT64,
+inicio_sesion_app_movil_numero INT64,
+sdoprom_mens_fondos_inversion_monto INT64,
+sdoprom_trim_casa_bolsa_monto INT64,
+sdoprom_mens_mesa_dinero_monto INT64,
+sdoprom_mens_pagare_plazo_monto INT64,
+sdoprom_mens_vista_monto INT64,
+txn_depositos_nom_numero INT64,
+txn_retiros_nom_numero INT64,
+depositos_nom_monto INT64,
+retiros_nom_monto INT64,
+fact_total_tdc_monto INT64,
+gastos_lujos_monto INT64,
+fact_luxury_monto INT64,
+gastos_transporte_monto INT64,
+fact_transporte_monto INT64,
+txn_servicios_infantiles_numero INT64,
+fact_servicios_monto INT64,
+gastos_personales_monto INT64,
+fact_gastos_personales_monto INT64,
+gastos_entretenimiento_monto INT64,
+fact_entretenimiento_monto INT64,
+gastos_otros_monto INT64,
+fact_otros_monto INT64,
+gastos_despensa_monto INT64,
+fact_despensa_monto INT64,
+score_bc_bandera INT64,
+score_bc_monto INT64,
+saldo_total_hipo_offus_monto INT64,
+saldo_total_auto_offus_monto INT64,
+total_hipo_offus_numero INT64,
+saldo_total_tdc_offus_monto INT64,
+credito_personal_offus_numero INT64,
+max_credito_personal_offus_monto INT64,
+total_auto_offus_numero INT64,
+total_credito_personal_offus_monto INT64,
+uso_credito_personal_offus_monto INT64,
+max_auto_offus_monto INT64,
+monto_max_tdc_offus_monto INT64,
+uso_tdc_offus_monto INT64,
+tdc_offus_numero INT64,
+max_hipo_offus_monto INT64,
+nom_monto INT64,
+codpos_long_numero INT64,
+codpos_lat_numero INT64,
+medio_contacto INT64,
+ing_mensual_monto INT64,
+retrospectivo_bandera INT64,
+aniosresdom_desc INT64,
+reus_bandera INT64,
+prom_sp6 INT64,
+prom_sp5 INT64,
+prom_sp4 INT64,
+prom_sp3 INT64,
+prom_sp2 INT64,
+prom_fact6 INT64,
+prom_fact5 INT64,
+prom_fact4 INT64,
+prom_fact3 INT64,
+prom_fact2 INT64,
+prom_md6 INT64,
+prom_md5 INT64,
+prom_md4 INT64,
+prom_md3 INT64,
+prom_md2 INT64,
+prom_mr6 INT64,
+prom_mr5 INT64,
+prom_mr4 INT64,
+prom_mr3 INT64,
+prom_mr2 INT64,
+porc_sp1 INT64,
+porc_sp2 INT64,
+porc_sp3 INT64,
+porc_sp4 INT64,
+porc_sp5 INT64,
+segmento_nombre_a INT64,
+segmento_nombre_aa INT64,
+segmento_nombre_b INT64,
+segmento_nombre_c INT64,
+segmento_nombre_d INT64,
+segmento_nombre_dc INT64,
+segmento_nombre_e INT64,
+segmento_nombre_ea INT64,
+segmento_nombre_eb INT64,
+segmento_nombre_ec INT64,
+segmento_nombre_f INT64,
+segmento_nombre_fa INT64,
+segmento_nombre_fb INT64,
+segmento_nombre_fc INT64,
+segmento_nombre_g INT64,
+segmento_nombre_ga INT64,
+segmento_nombre_gb INT64,
+segmento_nombre_gc INT64,
+segmento_nombre_h INT64,
+segmento_nombre_i INT64,
+segmento_nombre_ia INT64,
+segmento_nombre_ib INT64,
+segmento_nombre_j INT64,
+segmento_nombre_otro INT64,
+segmentogrupclav_numero_otro INT64,
+segmentogrupclav_numero_personal INT64,
+segmentogrupclav_numero_preferente INT64,
+segmentogrupclav_numero_pymes INT64,
+persona_tipo_pf INT64,
+persona_tipo_pfae INT64,
+estudios_desc_carrera_tecnica INT64,
+estudios_desc_licenciatura_profesional INT64,
+estudios_desc_otro INT64,
+estudios_desc_postgrado_maestria_doctorado INT64,
+estudios_desc_preparatoria INT64,
+estudios_desc_primaria INT64,
+estudios_desc_secundaria INT64,
+estudios_desc_sin_escolaridad INT64,
+metodo_afore INT64,
+metodo_buro_hrc INT64,
+metodo_depositos INT64,
+metodo_modelo_saldos INT64,
+metodo_nomina INT64,
+metodo_nomina_y_depositos INT64,
+metodo_otro INT64,
+estadociv_tipo_c INT64,
+estadociv_tipo_otro INT64,
+estadociv_tipo_s INT64,
+estadociv_tipo_u INT64,
+estadoclav_id_ags INT64,
+estadoclav_id_bc INT64,
+estadoclav_id_bcs INT64,
+estadoclav_id_cam INT64,
+estadoclav_id_cdmx INT64,
+estadoclav_id_chin INT64,
+estadoclav_id_chis INT64,
+estadoclav_id_coah INT64,
+estadoclav_id_col INT64,
+estadoclav_id_dgo INT64,
+estadoclav_id_gro INT64,
+estadoclav_id_gto INT64,
+estadoclav_id_hgo INT64,
+estadoclav_id_jal INT64,
+estadoclav_id_mex INT64,
+estadoclav_id_mich INT64,
+estadoclav_id_mor INT64,
+estadoclav_id_nay INT64,
+estadoclav_id_nl INT64,
+estadoclav_id_oax INT64,
+estadoclav_id_otro INT64,
+estadoclav_id_pue INT64,
+estadoclav_id_q_roo INT64,
+estadoclav_id_qro INT64,
+estadoclav_id_sin INT64,
+estadoclav_id_slp INT64,
+estadoclav_id_son INT64,
+estadoclav_id_tab INT64,
+estadoclav_id_tamps INT64,
+estadoclav_id_tlax INT64,
+estadoclav_id_ver INT64,
+estadoclav_id_yuc INT64,
+estadoclav_id_zac INT64,
+mes_fecha_01 INT64,
+mes_fecha_02 INT64,
+mes_fecha_03 INT64,
+mes_fecha_04 INT64,
+mes_fecha_05 INT64,
+mes_fecha_06 INT64,
+mes_fecha_07 INT64,
+mes_fecha_08 INT64,
+mes_fecha_09 INT64,
+mes_fecha_10 INT64,
+mes_fecha_11 INT64,
+mes_fecha_12 INT64
+);
+
+
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_importancia_caracteristicas_propension_prod_hipo_hist`
+(
+fecha DATE,
+version STRING,
+genero_femenino_bandera INT64,
+edad_cliente_anios_numero INT64,
+antig_cliente_meses_numero INT64,
+tenencia_auto_bandera INT64,
+tenencia_bxi_bandera INT64,
+tenencia_casa_bolsa_bandera INT64,
+tenencia_credito_nomina_bandera INT64,
+tenencia_hipo_bandera INT64,
+tenencia_mesa_dinero_bandera INT64,
+tenencia_credito_personal_bandera INT64,
+tenencia_pagare_plazo_bandera INT64,
+tenencia_seguros_bandera INT64,
+tenencia_fondos_inversion_bandera INT64,
+tenencia_tdc_bandera INT64,
+tenencia_vista_bandera INT64,
+total_tenencia_productos_numero INT64,
+nom_3m_bandera INT64,
+inicio_sesion_app_movil_numero INT64,
+sdoprom_mens_fondos_inversion_monto INT64,
+sdoprom_trim_casa_bolsa_monto INT64,
+sdoprom_mens_mesa_dinero_monto INT64,
+sdoprom_mens_pagare_plazo_monto INT64,
+sdoprom_mens_vista_monto INT64,
+txn_depositos_nom_numero INT64,
+txn_retiros_nom_numero INT64,
+depositos_nom_monto INT64,
+retiros_nom_monto INT64,
+fact_total_tdc_monto INT64,
+gastos_lujos_monto INT64,
+fact_luxury_monto INT64,
+gastos_transporte_monto INT64,
+fact_transporte_monto INT64,
+txn_servicios_infantiles_numero INT64,
+fact_servicios_monto INT64,
+gastos_personales_monto INT64,
+fact_gastos_personales_monto INT64,
+gastos_entretenimiento_monto INT64,
+fact_entretenimiento_monto INT64,
+gastos_otros_monto INT64,
+fact_otros_monto INT64,
+gastos_despensa_monto INT64,
+fact_despensa_monto INT64,
+score_bc_bandera INT64,
+score_bc_monto INT64,
+saldo_total_hipo_offus_monto INT64,
+saldo_total_auto_offus_monto INT64,
+total_hipo_offus_numero INT64,
+saldo_total_tdc_offus_monto INT64,
+credito_personal_offus_numero INT64,
+max_credito_personal_offus_monto INT64,
+total_auto_offus_numero INT64,
+total_credito_personal_offus_monto INT64,
+uso_credito_personal_offus_monto INT64,
+max_auto_offus_monto INT64,
+monto_max_tdc_offus_monto INT64,
+uso_tdc_offus_monto INT64,
+tdc_offus_numero INT64,
+max_hipo_offus_monto INT64,
+nom_monto INT64,
+codpos_long_numero INT64,
+codpos_lat_numero INT64,
+medio_contacto INT64,
+ing_mensual_monto INT64,
+retrospectivo_bandera INT64,
+aniosresdom_desc INT64,
+reus_bandera INT64,
+prom_sp6 INT64,
+prom_sp5 INT64,
+prom_sp4 INT64,
+prom_sp3 INT64,
+prom_sp2 INT64,
+prom_fact6 INT64,
+prom_fact5 INT64,
+prom_fact4 INT64,
+prom_fact3 INT64,
+prom_fact2 INT64,
+prom_md6 INT64,
+prom_md5 INT64,
+prom_md4 INT64,
+prom_md3 INT64,
+prom_md2 INT64,
+prom_mr6 INT64,
+prom_mr5 INT64,
+prom_mr4 INT64,
+prom_mr3 INT64,
+prom_mr2 INT64,
+porc_sp1 INT64,
+porc_sp2 INT64,
+porc_sp3 INT64,
+porc_sp4 INT64,
+porc_sp5 INT64,
+segmento_nombre_a INT64,
+segmento_nombre_aa INT64,
+segmento_nombre_b INT64,
+segmento_nombre_c INT64,
+segmento_nombre_d INT64,
+segmento_nombre_dc INT64,
+segmento_nombre_e INT64,
+segmento_nombre_ea INT64,
+segmento_nombre_eb INT64,
+segmento_nombre_ec INT64,
+segmento_nombre_f INT64,
+segmento_nombre_fa INT64,
+segmento_nombre_fb INT64,
+segmento_nombre_fc INT64,
+segmento_nombre_g INT64,
+segmento_nombre_ga INT64,
+segmento_nombre_gb INT64,
+segmento_nombre_gc INT64,
+segmento_nombre_h INT64,
+segmento_nombre_i INT64,
+segmento_nombre_ia INT64,
+segmento_nombre_ib INT64,
+segmento_nombre_j INT64,
+segmento_nombre_otro INT64,
+segmentogrupclav_numero_otro INT64,
+segmentogrupclav_numero_personal INT64,
+segmentogrupclav_numero_preferente INT64,
+segmentogrupclav_numero_pymes INT64,
+persona_tipo_pf INT64,
+persona_tipo_pfae INT64,
+estudios_desc_carrera_tecnica INT64,
+estudios_desc_licenciatura_profesional INT64,
+estudios_desc_otro INT64,
+estudios_desc_postgrado_maestria_doctorado INT64,
+estudios_desc_preparatoria INT64,
+estudios_desc_primaria INT64,
+estudios_desc_secundaria INT64,
+estudios_desc_sin_escolaridad INT64,
+metodo_afore INT64,
+metodo_buro_hrc INT64,
+metodo_depositos INT64,
+metodo_modelo_saldos INT64,
+metodo_nomina INT64,
+metodo_nomina_y_depositos INT64,
+metodo_otro INT64,
+estadociv_tipo_c INT64,
+estadociv_tipo_otro INT64,
+estadociv_tipo_s INT64,
+estadociv_tipo_u INT64,
+estadoclav_id_ags INT64,
+estadoclav_id_bc INT64,
+estadoclav_id_bcs INT64,
+estadoclav_id_cam INT64,
+estadoclav_id_cdmx INT64,
+estadoclav_id_chin INT64,
+estadoclav_id_chis INT64,
+estadoclav_id_coah INT64,
+estadoclav_id_col INT64,
+estadoclav_id_dgo INT64,
+estadoclav_id_gro INT64,
+estadoclav_id_gto INT64,
+estadoclav_id_hgo INT64,
+estadoclav_id_jal INT64,
+estadoclav_id_mex INT64,
+estadoclav_id_mich INT64,
+estadoclav_id_mor INT64,
+estadoclav_id_nay INT64,
+estadoclav_id_nl INT64,
+estadoclav_id_oax INT64,
+estadoclav_id_otro INT64,
+estadoclav_id_pue INT64,
+estadoclav_id_q_roo INT64,
+estadoclav_id_qro INT64,
+estadoclav_id_sin INT64,
+estadoclav_id_slp INT64,
+estadoclav_id_son INT64,
+estadoclav_id_tab INT64,
+estadoclav_id_tamps INT64,
+estadoclav_id_tlax INT64,
+estadoclav_id_ver INT64,
+estadoclav_id_yuc INT64,
+estadoclav_id_zac INT64,
+mes_fecha_01 INT64,
+mes_fecha_02 INT64,
+mes_fecha_03 INT64,
+mes_fecha_04 INT64,
+mes_fecha_05 INT64,
+mes_fecha_06 INT64,
+mes_fecha_07 INT64,
+mes_fecha_08 INT64,
+mes_fecha_09 INT64,
+mes_fecha_10 INT64,
+mes_fecha_11 INT64,
+mes_fecha_12 INT64
+);
+
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_importancia_caracteristicas_propension_prod_tdc_hist`
+(
+fecha DATE,
+version STRING,
+genero_femenino_bandera INT64,
+edad_cliente_anios_numero INT64,
+antig_cliente_meses_numero INT64,
+tenencia_auto_bandera INT64,
+tenencia_bxi_bandera INT64,
+tenencia_casa_bolsa_bandera INT64,
+tenencia_credito_nomina_bandera INT64,
+tenencia_hipo_bandera INT64,
+tenencia_mesa_dinero_bandera INT64,
+tenencia_credito_personal_bandera INT64,
+tenencia_pagare_plazo_bandera INT64,
+tenencia_seguros_bandera INT64,
+tenencia_fondos_inversion_bandera INT64,
+tenencia_tdc_bandera INT64,
+tenencia_vista_bandera INT64,
+total_tenencia_productos_numero INT64,
+nom_3m_bandera INT64,
+inicio_sesion_app_movil_numero INT64,
+sdoprom_mens_fondos_inversion_monto INT64,
+sdoprom_trim_casa_bolsa_monto INT64,
+sdoprom_mens_mesa_dinero_monto INT64,
+sdoprom_mens_pagare_plazo_monto INT64,
+sdoprom_mens_vista_monto INT64,
+txn_depositos_nom_numero INT64,
+txn_retiros_nom_numero INT64,
+depositos_nom_monto INT64,
+retiros_nom_monto INT64,
+fact_total_tdc_monto INT64,
+gastos_lujos_monto INT64,
+fact_luxury_monto INT64,
+gastos_transporte_monto INT64,
+fact_transporte_monto INT64,
+txn_servicios_infantiles_numero INT64,
+fact_servicios_monto INT64,
+gastos_personales_monto INT64,
+fact_gastos_personales_monto INT64,
+gastos_entretenimiento_monto INT64,
+fact_entretenimiento_monto INT64,
+gastos_otros_monto INT64,
+fact_otros_monto INT64,
+gastos_despensa_monto INT64,
+fact_despensa_monto INT64,
+score_bc_bandera INT64,
+score_bc_monto INT64,
+saldo_total_hipo_offus_monto INT64,
+saldo_total_auto_offus_monto INT64,
+total_hipo_offus_numero INT64,
+saldo_total_tdc_offus_monto INT64,
+credito_personal_offus_numero INT64,
+max_credito_personal_offus_monto INT64,
+total_auto_offus_numero INT64,
+total_credito_personal_offus_monto INT64,
+uso_credito_personal_offus_monto INT64,
+max_auto_offus_monto INT64,
+monto_max_tdc_offus_monto INT64,
+uso_tdc_offus_monto INT64,
+tdc_offus_numero INT64,
+max_hipo_offus_monto INT64,
+nom_monto INT64,
+codpos_long_numero INT64,
+codpos_lat_numero INT64,
+medio_contacto INT64,
+ing_mensual_monto INT64,
+retrospectivo_bandera INT64,
+aniosresdom_desc INT64,
+reus_bandera INT64,
+prom_sp6 INT64,
+prom_sp5 INT64,
+prom_sp4 INT64,
+prom_sp3 INT64,
+prom_sp2 INT64,
+prom_fact6 INT64,
+prom_fact5 INT64,
+prom_fact4 INT64,
+prom_fact3 INT64,
+prom_fact2 INT64,
+prom_md6 INT64,
+prom_md5 INT64,
+prom_md4 INT64,
+prom_md3 INT64,
+prom_md2 INT64,
+prom_mr6 INT64,
+prom_mr5 INT64,
+prom_mr4 INT64,
+prom_mr3 INT64,
+prom_mr2 INT64,
+porc_sp1 INT64,
+porc_sp2 INT64,
+porc_sp3 INT64,
+porc_sp4 INT64,
+porc_sp5 INT64,
+segmento_nombre_a INT64,
+segmento_nombre_aa INT64,
+segmento_nombre_b INT64,
+segmento_nombre_c INT64,
+segmento_nombre_d INT64,
+segmento_nombre_dc INT64,
+segmento_nombre_e INT64,
+segmento_nombre_ea INT64,
+segmento_nombre_eb INT64,
+segmento_nombre_ec INT64,
+segmento_nombre_f INT64,
+segmento_nombre_fa INT64,
+segmento_nombre_fb INT64,
+segmento_nombre_fc INT64,
+segmento_nombre_g INT64,
+segmento_nombre_ga INT64,
+segmento_nombre_gb INT64,
+segmento_nombre_gc INT64,
+segmento_nombre_h INT64,
+segmento_nombre_i INT64,
+segmento_nombre_ia INT64,
+segmento_nombre_ib INT64,
+segmento_nombre_j INT64,
+segmento_nombre_otro INT64,
+segmentogrupclav_numero_otro INT64,
+segmentogrupclav_numero_personal INT64,
+segmentogrupclav_numero_preferente INT64,
+segmentogrupclav_numero_pymes INT64,
+persona_tipo_pf INT64,
+persona_tipo_pfae INT64,
+estudios_desc_carrera_tecnica INT64,
+estudios_desc_licenciatura_profesional INT64,
+estudios_desc_otro INT64,
+estudios_desc_postgrado_maestria_doctorado INT64,
+estudios_desc_preparatoria INT64,
+estudios_desc_primaria INT64,
+estudios_desc_secundaria INT64,
+estudios_desc_sin_escolaridad INT64,
+metodo_afore INT64,
+metodo_buro_hrc INT64,
+metodo_depositos INT64,
+metodo_modelo_saldos INT64,
+metodo_nomina INT64,
+metodo_nomina_y_depositos INT64,
+metodo_otro INT64,
+estadociv_tipo_c INT64,
+estadociv_tipo_otro INT64,
+estadociv_tipo_s INT64,
+estadociv_tipo_u INT64,
+estadoclav_id_ags INT64,
+estadoclav_id_bc INT64,
+estadoclav_id_bcs INT64,
+estadoclav_id_cam INT64,
+estadoclav_id_cdmx INT64,
+estadoclav_id_chin INT64,
+estadoclav_id_chis INT64,
+estadoclav_id_coah INT64,
+estadoclav_id_col INT64,
+estadoclav_id_dgo INT64,
+estadoclav_id_gro INT64,
+estadoclav_id_gto INT64,
+estadoclav_id_hgo INT64,
+estadoclav_id_jal INT64,
+estadoclav_id_mex INT64,
+estadoclav_id_mich INT64,
+estadoclav_id_mor INT64,
+estadoclav_id_nay INT64,
+estadoclav_id_nl INT64,
+estadoclav_id_oax INT64,
+estadoclav_id_otro INT64,
+estadoclav_id_pue INT64,
+estadoclav_id_q_roo INT64,
+estadoclav_id_qro INT64,
+estadoclav_id_sin INT64,
+estadoclav_id_slp INT64,
+estadoclav_id_son INT64,
+estadoclav_id_tab INT64,
+estadoclav_id_tamps INT64,
+estadoclav_id_tlax INT64,
+estadoclav_id_ver INT64,
+estadoclav_id_yuc INT64,
+estadoclav_id_zac INT64,
+mes_fecha_01 INT64,
+mes_fecha_02 INT64,
+mes_fecha_03 INT64,
+mes_fecha_04 INT64,
+mes_fecha_05 INT64,
+mes_fecha_06 INT64,
+mes_fecha_07 INT64,
+mes_fecha_08 INT64,
+mes_fecha_09 INT64,
+mes_fecha_10 INT64,
+mes_fecha_11 INT64,
+mes_fecha_12 INT64
+);
+
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_ins_abn_hip_hist`
 (
 cliente_id INT64,
 credito_numero INT64,
@@ -830,7 +1920,7 @@ nivelestclav_8 FLOAT64,
 nivelestclav_otro FLOAT64
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_ins_abn_hip_vxx`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_ins_abn_hip_vxx`
 (
 cliente_id INT64,
 credito_numero INT64,
@@ -919,7 +2009,7 @@ nivelestclav_otro FLOAT64
 );
 
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_ins_abn_tot_hist`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_ins_abn_tot_hist`
 (
 cliente_id INT64 OPTIONS(description="cliente"),
 fecha_informacion INT64 OPTIONS(description="fecha_informacion"),
@@ -964,10 +2054,10 @@ saldo_r36 FLOAT64 OPTIONS(description="Saldo hace 3 meses dividido saldo hace 6 
 PARTITION BY RANGE_BUCKET(fecha_informacion, GENERATE_ARRAY(20000001, 20999901, 100))
 OPTIONS(
 description="Tabla de insumo de abanono total historico",
-labels=[("capa", "oro")]
+labels=[("capa_oro", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_ins_abn_tot_vxx`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_ins_abn_tot_vxx`
 (
 cliente_id INT64 OPTIONS(description="cliente"),
 fecha_informacion INT64 OPTIONS(description="fecha_informacion"),
@@ -1011,10 +2101,10 @@ saldo_r36 FLOAT64 OPTIONS(description="Saldo hace 3 meses dividido saldo hace 6 
 )
 OPTIONS(
 description="Tabla de insumo de abanono total",
-labels=[("capa", "oro")]
+labels=[("capa_oro", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_ins_prop_prod_hist`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_ins_prop_prod_hist`
 (
 cliente_id INT64 OPTIONS(description="Número de cliente"),
 fecha_informacion INT64 OPTIONS(description="Fecha de información"),
@@ -1207,7 +2297,7 @@ mes_fecha_12 INT64
 PARTITION BY RANGE_BUCKET(fecha_informacion, GENERATE_ARRAY(20000001, 20999901, 100));
 
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_ins_prop_prod_vxx`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_ins_prop_prod_vxx`
 (
 cliente_id INT64 OPTIONS(description="Número de cliente"),
 fecha_informacion INT64 OPTIONS(description="Fecha de información"),
@@ -1398,7 +2488,7 @@ mes_fecha_11 INT64,
 mes_fecha_12 INT64
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_metricas_abandono_hipo_hist`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_metricas_abandono_hipo_hist`
 (
 fecha_informacion DATE,
 roc_auc FLOAT64,
@@ -1409,7 +2499,7 @@ k_s FLOAT64,
 accuracy FLOAT64
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_metricas_abandono_total_hist`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_metricas_abandono_total_hist`
 (
 fecha_informacion DATE,
 roc_auc FLOAT64,
@@ -1420,7 +2510,7 @@ k_s FLOAT64,
 accuracy FLOAT64
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_metricas_prop_prod_hist`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ant_metricas_prop_prod_hist`
 (
 fecha_informacion DATE,
 roc_auc_auto FLOAT64,
@@ -1455,7 +2545,7 @@ k_s_tdc FLOAT64,
 accuracy_tdc FLOAT64
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ejecucion_metrica_entrena_prop_prod`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_b_ejecucion_metrica_entrena_prop_prod`
 (
 fecha_informacion DATETIME,
 roc_auc_auto FLOAT64,
@@ -1490,7 +2580,7 @@ k_s_tdc FLOAT64,
 accuracy_tdc FLOAT64
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_import_carac_prop_prod_auto`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_import_carac_prop_prod_auto`
 (
 fecha_informacion DATE,
 version STRING,
@@ -1682,7 +2772,7 @@ mes_fecha_12 INT64
 );
 
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_import_carac_prop_prod_cn`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_import_carac_prop_prod_cn`
 (
 fecha_informacion DATE,
 version STRING,
@@ -1873,7 +2963,7 @@ mes_fecha_11 INT64,
 mes_fecha_12 INT64
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_import_carac_prop_prod_fondos`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_import_carac_prop_prod_fondos`
 (
 fecha_informacion DATE,
 version STRING,
@@ -2064,7 +3154,7 @@ mes_fecha_11 INT64,
 mes_fecha_12 INT64
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_import_carac_prop_prod_hipo`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_import_carac_prop_prod_hipo`
 (
 fecha_informacion DATE,
 version STRING,
@@ -2255,7 +3345,7 @@ mes_fecha_11 INT64,
 mes_fecha_12 INT64
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_import_carac_prop_prod_tdc`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_import_carac_prop_prod_tdc`
 (
 fecha_informacion DATE,
 version STRING,
@@ -2446,7 +3536,7 @@ mes_fecha_11 INT64,
 mes_fecha_12 INT64
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_pred_abn_total_full`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_pred_abn_total_full`
 (
 cliente_id INT64 OPTIONS(description="cliente"),
 fecha_informacion INT64 OPTIONS(description="fecha_informacion"),
@@ -2490,7 +3580,7 @@ saldo_r36 FLOAT64 OPTIONS(description="Saldo hace 3 meses dividido saldo hace 6 
 prediction STRING
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_pred_abnd_hip_full`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_pred_abnd_hip_full`
 (
 cliente_id INT64,
 credito_numero INT64,
@@ -2579,7 +3669,7 @@ nivelestclav_otro FLOAT64,
 prediction STRING
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_pred_prop_prod_full`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_ant_oro.t_paso_pred_prop_prod_full`
 (
 cliente_id INT64 OPTIONS(description="Número de cliente"),
 fecha_informacion INT64 OPTIONS(description="Fecha de información"),
@@ -2772,7 +3862,7 @@ prediction STRING
 );
 
 #ds_b_dwh_cap_oro
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_dwh_cap_oro.t_b_dwh_cap_saldo_vista`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_dwh_cap_oro.t_b_dwh_cap_saldo_vista`
 (
   cuenta_id STRING(19) OPTIONS(description="Cuenta de cheques, llave única en sistema Altamira"),
   fechaultmov_date DATE OPTIONS(description=" Fecha del último movimiento"),
@@ -2784,11 +3874,11 @@ CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_dwh_cap_oro.t_b_dwh_cap_sald
 PARTITION BY DATE_TRUNC(pdimtiempo_fecha, MONTH)
 OPTIONS(
   description="Tabla de Hechos de Créditos APOLO, contiene saldos financieros y contables por Línea y Crédito",
-  labels=[("capa", "oro")]
+  labels=[("capa", "oro"), ("tipo", "produccion")]
 );
 
 #ds_b_dwh_cat_oro
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_dwh_cat_oro.t_b_dwh_cat_segmentos`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_dwh_cat_oro.t_b_dwh_cat_segmentos`
 (
   pdimsegmento_numero NUMERIC(9) OPTIONS(description="Llave subrogada primaria de la tabla SegmentoDim"),
   bancagrup_tipo STRING(20) OPTIONS(description="Clave de Banca o Área de Negocio (ya no está en uso)"),
@@ -2801,12 +3891,12 @@ CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_dwh_cat_oro.t_b_dwh_cat_segm
   subsegmento_numero NUMERIC(9) OPTIONS(description="Clave de subsegmento (ya no está en uso)")
 )
 OPTIONS(
-  description="Tabla de catálogo que contiene los atributos de la relación Cliente - Segmento",
-  labels=[("capa", "oro")]
+  description="Tabla de catálogo que contiene los atributos de la relacion Cliente - Segmento",
+  labels=[("capa", "oro"), ("tipo", "produccion")]
 );
 
 #ds_b_dwh_cli_oro
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_dwh_cli_oro.t_b_dwh_cli_datos_basicos`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_b_dwh_cli_oro.t_b_dwh_cli_datos_basicos`
 (
   numerocif_id INT64,
   pdimcliente_id NUMERIC,
@@ -2822,7 +3912,7 @@ CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_b_dwh_cli_oro.t_b_dwh_cli_dato
 );
 
 #ds_oro_generico
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_oro_generico.t_b_ant_adquisiciones_productos_observadas`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_oro_generico.t_b_ant_adquisiciones_productos_observadas`
 (
   cliente_id INT64 OPTIONS(description="Número de cliente"),
   target_tdc_umbral INT64,
@@ -2838,7 +3928,7 @@ CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_oro_generico.t_b_ant_adquisici
   prediccion_fondos_umbral INT64
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_oro_generico.t_b_ant_fugas_hipotecario_observadas`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_oro_generico.t_b_ant_fugas_hipotecario_observadas`
 (
   cliente_id INT64 OPTIONS(description="Número de cliente"),
   credito FLOAT64 OPTIONS(description="Número de crédito evaluado"),
@@ -2850,7 +3940,7 @@ CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_oro_generico.t_b_ant_fugas_hip
   prediccion_umbral INT64 OPTIONS(description="Umbral de prediccion calculado")
 );
 
-CREATE OR REPLACE TABLE `bnt-lakehouse-oro-pro.ds_oro_generico.t_b_ant_fugas_total_personal_observadas`
+CREATE TABLE `bnt-lakehouse-oro-pro.ds_oro_generico.t_b_ant_fugas_total_personal_observadas`
 (
   cliente_id INT64 OPTIONS(description="Número de cliente"),
   objetivo INT64 OPTIONS(description="1: Si el cliente abandono, 0: Si el cliente no abandono"),
