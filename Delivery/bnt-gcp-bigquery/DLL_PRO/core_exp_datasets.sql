@@ -25,9 +25,3 @@ CREATE SCHEMA `bnt-lakehouse-core-pro.ds_metricas`
     labels = [('ambiente','produccion')],
     location = 'us');
 
-CREATE SCHEMA `bnt-lakehouse-core-pro.fugas_pruebas`
-  OPTIONS (
-    description = 'DESCRIPTION',
-    labels = [('ambiente','produccion')],
-    location = 'us');
-
