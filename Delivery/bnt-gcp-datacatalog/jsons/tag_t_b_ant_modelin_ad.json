@@ -1,0 +1,9 @@
+  {
+    "nombre_tabla": "t_b_ant_modelin",
+    "fecha_creacion": "April 25, 2022 at 9:42:23 AM GMT-5",
+    "tipo_informacion": "Transacciones",
+    "descripcion_tabla": "Contiene información a nivel cliente (tenencias, saldos, etc.)",
+    "origen": "IIAS",
+    "tipo_insumo": "DataSet",
+    "usuario_creador": "A8052826"
+  }

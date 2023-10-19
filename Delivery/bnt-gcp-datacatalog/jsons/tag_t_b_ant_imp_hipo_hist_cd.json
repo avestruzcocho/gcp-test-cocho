@@ -1,0 +1,8 @@
+  {
+    "nombre_tabla": "t_b_ant_importancia_caracteristicas_propension_prod_hipo_hist",
+    "frecuencia_actualizacion": "Mensual",
+    "dia_carga": "A petición",
+    "horario_max_carga": "A petición",
+    "tipo_carga": "Incremental",
+    "politica_asociada": "NA"
+  }

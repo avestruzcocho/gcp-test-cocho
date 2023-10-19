@@ -1,0 +1,9 @@
+  {
+    "nombre_tabla": "t_b_cap_dispersion_nomina_m",
+    "fecha_creacion": "July 14, 2020 at 1:26:31 AM GMT-5",
+    "tipo_informacion": "Cat",
+    "descripcion_tabla": "Tabla con información de cuentas que reciben dispersiones de nómina, concentrado mensual",
+    "origen": "SAS",
+    "tipo_insumo": "DataSet",
+    "usuario_creador": "BLUADMIN"
+  }

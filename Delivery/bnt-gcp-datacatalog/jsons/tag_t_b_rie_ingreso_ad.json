@@ -1,0 +1,9 @@
+  {
+    "nombre_tabla": "t_b_rie_ingreso_cliente",
+    "fecha_creacion": "July 14, 2020 at 3:30:40 AM GMT-5",
+    "tipo_informacion": "Transacciones",
+    "descripcion_tabla": "Es el estimador de la base de ingresos",
+    "origen": "SAS",
+    "tipo_insumo": "DataSet",
+    "usuario_creador": "BLUADMIN"
+  }

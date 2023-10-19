@@ -1,0 +1,9 @@
+  {
+    "nombre_tabla": "altclientedim_sas_opt",
+    "fecha_creacion": "July 23, 2020 at 11:26:27 PM GMT-5",
+    "tipo_informacion": "Transacciones",
+    "descripcion_tabla": "Informacion de cliente DWH - (volumen total de clientes activos inactivos etc)",
+    "origen": "SAS",
+    "tipo_insumo": "DataSet",
+    "usuario_creador": "BLUADMIN"
+  }

@@ -1,0 +1,8 @@
+  {
+    "nombre_tabla": "t_b_col_tdc_mensual",
+    "frecuencia_actualizacion": "Mensual",
+    "dia_carga": "7 H",
+    "horario_max_carga": "4:00:00",
+    "tipo_carga": "Total",
+    "politica_asociada": "NA"
+  }

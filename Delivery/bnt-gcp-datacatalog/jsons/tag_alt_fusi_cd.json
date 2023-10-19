@@ -1,0 +1,8 @@
+  {
+    "nombre_tabla": "altamira_fusiones_fin_opt",
+    "frecuencia_actualizacion": "Mensual",
+    "dia_carga": "6 H",
+    "horario_max_carga": "4:00:00",
+    "tipo_carga": "Total",
+    "politica_asociada": "NA"
+  }

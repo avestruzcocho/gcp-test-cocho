@@ -1,0 +1,8 @@
+  {
+    "nombre_tabla": "altchequesfact_opt",
+    "frecuencia_actualizacion": "Diario",
+    "dia_carga": "Martes a Domingo",
+    "horario_max_carga": "4:00:00",
+    "tipo_carga": "Incremental",
+    "politica_asociada": "NA"
+  }

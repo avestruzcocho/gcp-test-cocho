@@ -1,0 +1,9 @@
+  {
+    "nombre_tabla": "t_b_ant_calif_abandono_hip_hist_vxx",
+    "fecha_creacion": "August 31, 2022 at 12:01:36 PM GMT-5",
+    "tipo_informacion": "Transacciones",
+    "descripcion_tabla": "Contiene las calificaciones para el modelo de abandono de hipoteca",
+    "origen": "IIAS",
+    "tipo_insumo": "DataSet",
+    "usuario_creador": "A8053950"
+  }
