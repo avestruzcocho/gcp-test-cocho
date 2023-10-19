@@ -1,8 +1,8 @@
 #bnt-lakehouse-brc-pro
-#Tablas
+#Tablas 
 
 #ds_b_ant_brc
-CREATE OR REPLACE TABLE `ds_b_ant_brc.adquisiciones_productos_observadas`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_ant_brc.adquisiciones_productos_observadas`
 (
 sic FLOAT64 OPTIONS(description="Número de cliente"),
 producto STRING(6) OPTIONS(description="Tipo de producto"),
@@ -16,11 +16,11 @@ grupo STRING(14) OPTIONS(description="Tipo grupo")
 )
 PARTITION BY fecha_captura
 OPTIONS(
-description="Tabla de Fugas Propensión Productos",
-labels=[("capa","bronce")]
+description="Tabla de Fugas Propension Productos",
+labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_ant_brc.codigos_postales_mexico_ii`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_ant_brc.codigos_postales_mexico_ii`
 (
 d_codigo INT64 OPTIONS(description="Llave"),
 codpos_long FLOAT64 OPTIONS(description="Latitud del código postal del cliente"),
@@ -28,36 +28,36 @@ codpos_lat FLOAT64 OPTIONS(description="Longitud del código postal del cliente"
 )
 OPTIONS(
 description="Tabla de códigos postales. Latitud y longitud del código postal de los clientes",
-labels=[("capa","bronce")]
+labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_ant_brc.fugas_hipotecario_observadas`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_ant_brc.fugas_hipotecario_observadas`
 (
 num_clie FLOAT64 OPTIONS(description="Número de cliente"),
 credito FLOAT64 OPTIONS(description="Número de crédito evaluado"),
-flag_fuga FLOAT64 OPTIONS(description="1: Si el cliente movió su crédito hipotecario a otro banco. 0: El cliente mantuvo su crédito hipotecario en el banco"),
+flag_fuga FLOAT64 OPTIONS(description="1: Si el cliente movió su crédito hipotecario a otro banco 0: El cliente mantuvo su crédito hipotecario en el banco"),
 fecha_informacion DATE OPTIONS(description="Fecha de información")
 )
 PARTITION BY fecha_informacion
 OPTIONS(
 description="Tabla de Fugas Abandono Hipotecario",
-labels=[("capa","bronce")]
+labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_ant_brc.fugas_total_personal_observadas`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_ant_brc.fugas_total_personal_observadas`
 (
 clie_final FLOAT64 OPTIONS(description="Número de cliente"),
 fecha_obs DATE OPTIONS(description="Fecha de información"),
-target FLOAT64 OPTIONS(description="1: Si el cliente abandonó. 0: Si el cliente no abandonó"),
+target FLOAT64 OPTIONS(description="1: Si el cliente abandono, 0: Si el cliente no abandono"),
 fecha_abandono DATE OPTIONS(description="Fecha de abandono")
 )
 PARTITION BY fecha_abandono
 OPTIONS(
 description="Tabla de Fugas Abandono Total",
-labels=[("capa","bronce")]
+labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_ant_brc.insumos_abandono_hipoteca_hist`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_ant_brc.insumos_abandono_hipoteca_hist`
 (
 credito FLOAT64 OPTIONS(description="Número de crédito"),
 mth DATE OPTIONS(description="Fecha de información (mth de month)"),
@@ -69,7 +69,7 @@ n_saldocontable FLOAT64 OPTIONS(description="Saldo contable último en balance, 
 modalidad FLOAT64 OPTIONS(description="Modalidad del crédito"),
 tipo_ingreso STRING OPTIONS(description="Tipo de ingreso"),
 broker STRING OPTIONS(description="Bróker del cliente"),
-f_broker FLOAT64 OPTIONS(description="Tiene bróker. Es una flag o indicadora (0 si no tiene, 1 si tiene)"),
+f_broker FLOAT64 OPTIONS(description="Tiene bróker Es una flag o indicadora (0 si no tiene, 1 si tiene)"),
 mob FLOAT64 OPTIONS(description="Antigüedad del crédito en meses"),
 exigible FLOAT64 OPTIONS(description="Pago exigible al crédito hipotecario"),
 pago FLOAT64 OPTIONS(description="Pago al crédito hipotecario"),
@@ -83,17 +83,17 @@ consulta_3m FLOAT64 OPTIONS(description="Número de consultas a buró de crédit
 consulta_6m FLOAT64 OPTIONS(description="Número de consultas a buró de crédito en los últimos 6 meses"),
 consulta_12m FLOAT64 OPTIONS(description="Número de consultas a buró de crédito en los últimos 12 meses"),
 max_npv FLOAT64 OPTIONS(description="Máxima morosidad histórica, pv es pagos vencidos, es muy conocido este concepto en el banco"),
-ltv FLOAT64 OPTIONS(description="Importe del crédito / Valor de la garantía. LTV es loan to value, también un término muy conocido en el banco"),
+ltv FLOAT64 OPTIONS(description="Importe del crédito / Valor de la garantía LTV es loan to value, también un término muy conocido en el banco"),
 ltv_cierre FLOAT64 OPTIONS(description="Saldo actual a mes de cierre / importe del crédito "),
 n_score_riesgo FLOAT64 OPTIONS(description="Es el score de riesgos, es un valor entre 0 y 1000")
 )
 PARTITION BY DATE_TRUNC(mth, MONTH)
 OPTIONS(
 description="Tabla de clientes listos para ser calificados por el modelo de abandono hipotecario",
-labels=[("capa","bronce")]
+labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_ant_brc.modelin`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_ant_brc.modelin`
 (
 num_clie FLOAT64 OPTIONS(description="Número de cliente"),
 obs INT64 OPTIONS(description="Fecha de información"),
@@ -102,7 +102,7 @@ txn_ret FLOAT64 OPTIONS(description="Número de transacciones de retiro de Nómi
 txn_r3 FLOAT64 OPTIONS(description="Número de transacciones de retiro de la cuenta de Nómina a una cuenta externa"),
 sp_socinv FLOAT64 OPTIONS(description="Saldo promedio mensual en Fondos de Inversión"),
 sp_cb FLOAT64 OPTIONS(description="Saldo promedio trimestral Casa de Bolsa"),
-sp_plazo FLOAT64 OPTIONS(description="Saldo promedio mensual en pagarés a plazos"),
+sp_plazo FLOAT64 OPTIONS(description="Saldo promedio mensual en pagares a plazos"),
 sp_vista FLOAT64 OPTIONS(description="Saldo promedio vista"),
 sp_mesa FLOAT64 OPTIONS(description="Saldo promedio mensual en mesa de dinero"),
 fact FLOAT64 OPTIONS(description="Suma de la facturación en Tarjeta de crédito"),
@@ -110,9 +110,9 @@ util_tdc FLOAT64 OPTIONS(description="Porcentaje de utilización de la Tarjeta d
 mobs_tdc FLOAT64 OPTIONS(description="Mínima antigüedad en Tarjetas de Crédito"),
 sdo_cierre_tdc FLOAT64 OPTIONS(description="Saldo total en TDC's"),
 ambs_crlim FLOAT64 OPTIONS(description="Máximo límite de Crédito en TDC off-us"),
-fam_auto FLOAT64 OPTIONS(description="Flag o indicadora de tenencia de crédito automotriz. 1 si tiene, 0 si no tiene"),
+fam_auto FLOAT64 OPTIONS(description="Flag o indicadora de tenencia de crédito automotriz, 1 si tiene, 0 si no tiene"),
 fam_bxi FLOAT64 OPTIONS(description="Flag o indicadora de banca por internet (la banca por internet no es lo mismo que la banca móvil)"),
-fam_casabolsa FLOAT64 OPTIONS(description="Flag o indicadora de Casa de Bolsa"),
+fam_casabolsa FLOAT64 OPTIONS(description="Flag o indicadore de Casa de Bolsa"),
 fam_crednomina FLOAT64 OPTIONS(description="Flag o indicadora de tenencia de crédito de nómina"),
 fam_hipo FLOAT64 OPTIONS(description="Flag o indicadora de tenencia de crédito hipotecario"),
 fam_mesadinero FLOAT64 OPTIONS(description="Flag o indicadora de tenencia de mesa de dinero"),
@@ -120,7 +120,7 @@ fam_personal FLOAT64 OPTIONS(description="Flag o indicadora de tenencia de créd
 fam_plazo FLOAT64 OPTIONS(description="Flag o indicadora de tenencia de pagares a plazos"),
 fam_seguros FLOAT64 OPTIONS(description="Si el cliente cuenta con seguro"),
 fam_sociedades FLOAT64 OPTIONS(description="Flag o indicadora de tenencia de fondos de inversión"),
-fam_tdc FLOAT64 OPTIONS(description="Flag o indicadora de tenencia de tarjeta de crédito"),
+fam_tdc FLOAT64 OPTIONS(description="Flago o indicadora de tenencia de tarjeta de crédito"),
 fam_vista FLOAT64 OPTIONS(description="Indicadora de tenencia de Producto vista"),
 mobs_emi NUMERIC(20) OPTIONS(description="Antigüedad en meses de la emisora"),
 monto_dep FLOAT64 OPTIONS(description="Monto depositado a cuenta de nómina"),
@@ -139,11 +139,11 @@ score_value FLOAT64 OPTIONS(description="Score de buró de crédito"),
 num_tdc_offus FLOAT64 OPTIONS(description="Número de tarjetas de crédito off-us"),
 num_au_offus FLOAT64 OPTIONS(description="Número de créditos de auto off-us"),
 num_hipo_offus FLOAT64 OPTIONS(description="Número de créditos hipotecarios off-us"),
-num_pln_offus FLOAT64 OPTIONS(description="Número de préstamos personales off-us"),
+num_pln_offus FLOAT64 OPTIONS(description="Número de prestamos personales off-us"),
 sexo_f FLOAT64 OPTIONS(description="Flag o indicadora si el cliente es mujer"),
 tienescore FLOAT64 OPTIONS(description="Flag o indicadora si el cliente tiene score"),
 edad FLOAT64 OPTIONS(description="Edad del cliente"),
-es_nomina FLOAT64 OPTIONS(description="Haber recibido más de 100 pesos en nómina en los últimos 3 meses"),
+es_nomina FLOAT64 OPTIONS(description="Haber recibido más de 100 pesos en nomina en los ultimos 3 meses"),
 hbtdc_offus FLOAT64 OPTIONS(description="Monto ocupado de su límite de crédito en TDC off-us"),
 hbpln_offus FLOAT64 OPTIONS(description="Monto ocupado de su límite de crédito personal off-us"),
 txn_apparel BIGNUMERIC(38) OPTIONS(description="Transacciones con TDC y Débito en Apparel"),
@@ -219,12 +219,12 @@ logins BIGNUMERIC(38) OPTIONS(description="Número de logeos en la APP móvil")
 PARTITION BY RANGE_BUCKET(obs, GENERATE_ARRAY(200000, 209999, 1))
 OPTIONS(
 description="Tabla que contiene la concentración de datos agregados que permiten tener una visión global del cliente. Es un reporte previo a la generación de variables.",
-labels=[("capa","bronce")]
+labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
 
 #ds_b_cap_brc
-CREATE OR REPLACE TABLE `ds_b_cap_brc.ctasactnom_opt`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_cap_brc.ctasactnom_opt`
 (
   num_clie NUMERIC(8) OPTIONS(description="Número de cliente Altamira"),
   mth DATE OPTIONS(description="Mes y año de la información"),
@@ -233,13 +233,13 @@ CREATE OR REPLACE TABLE `ds_b_cap_brc.ctasactnom_opt`
 )
 PARTITION BY DATE_TRUNC(fecha_informacion, MONTH)
 OPTIONS(
-description="Tabla con información de cuentas que reciben dispersiones de nómina, concentrado mensual",
-labels=[("capa","bronce")]
+  description="Tabla con información de cuentas que reciben dispersiones de nómina, concentrado mensual",
+  labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
 #ds_b_cli_brc
 
-CREATE OR REPLACE TABLE `ds_b_cli_brc.altamira_fusiones_fin_opt`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_cli_brc.altamira_fusiones_fin_opt`
 (
 clie_fusio INT64 OPTIONS(description="Número de cliente que se fusiona"),
 clie_perm INT64 OPTIONS(description="Número de cliente que permanece tras una fusión"),
@@ -247,11 +247,11 @@ fecha_informacion DATE OPTIONS(description="Fecha de información")
 )
 PARTITION BY DATE_TRUNC(fecha_informacion, MONTH)
 OPTIONS(
-description="Tabla de relación de último cliente que permanece después de la fusión",
-labels=[("capa","bronce")]
+description="Tabla de relación de último cliente que permanece despues de la fusión",
+labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_cli_brc.altclientedim_sas_opt`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_cli_brc.altclientedim_sas_opt`
 (
 num_clie NUMERIC(8) OPTIONS(description="Número de cliente Altamira"),
 fecha_alta DATE OPTIONS(description="Fecha de alta del cliente Altamira"),
@@ -267,10 +267,10 @@ fecha_informacion DATE OPTIONS(description="Fecha de información")
 PARTITION BY DATE_TRUNC(fecha_informacion, MONTH)
 OPTIONS(
 description="Tabla de información de clientes activos (Aquellos con por lo menos alguna relación activa de producto) del Banco",
-labels=[("capa","bronce")]
+labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_cli_brc.altclienterelcuen_sas_opt`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_cli_brc.altclienterelcuen_sas_opt`
 (
 num_clie NUMERIC(12) OPTIONS(description="Número de cliente del producto"),
 cuenta INT64 OPTIONS(description="Número de cuenta Altamira"),
@@ -282,10 +282,10 @@ fecha_informacion DATE OPTIONS(description="Fecha de la información")
 PARTITION BY DATE_TRUNC(fecha_informacion, MONTH)
 OPTIONS(
 description="Tabla de información de la relación de cuenta cliente con empresa",
-labels=[("capa","bronce")]
+labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
-CREATE OR REPLACE TABLE `ds_b_cli_brc.segmentos_clientes_opt`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_cli_brc.segmentos_clientes_opt`
 (
 num_clie NUMERIC(8) OPTIONS(description="Número de cliente Altamira"),
 segmento STRING(3) OPTIONS(description="Descripción segmento del cliente"),
@@ -294,17 +294,17 @@ fecha_informacion DATE OPTIONS(description="Fecha de información")
 )
 PARTITION BY DATE_TRUNC(fecha_informacion, MONTH)
 OPTIONS(
-description="Tabla que contiene el nivel al que corresponde el cliente",
-labels=[("capa","bronce")]
+description="Tabla que Contiene el nivel al que corresponde el cliente",
+labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
 #ds_b_col_brc
 
-CREATE OR REPLACE TABLE `ds_b_col_brc.perf_opt`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_col_brc.perf_opt`
 (
   ambs_acct STRING(20) OPTIONS(description="Número de cuenta"),
   sdo_total_fin FLOAT64 OPTIONS(description="Saldo total al cierre, incluye promociones"),
-  clasificacion1 STRING(2) OPTIONS(description="Bandera (SI/NO) para cuenta clasificada (Vigente/Vencida) y no clasificada"),
+  clasificacion1 STRING(2) OPTIONS(description="Bandera (SI/NO) cuenta clasificada (Vigente/Vencida) y no clasificada"),
   mth DATE OPTIONS(description="Mes y año de la información"),
   ambs_date_opened DATE OPTIONS(description="Fecha de apertura de la cuenta"),
   ambs_block_code_1 STRING(1) OPTIONS(description="Código de bloqueo 1"),
@@ -313,31 +313,31 @@ CREATE OR REPLACE TABLE `ds_b_col_brc.perf_opt`
 )
 PARTITION BY DATE_TRUNC(fecha_informacion, MONTH)
 OPTIONS(
-description="Tabla de perfil de pago de tarjeta de crédito",
-labels=[("capa","bronce")]
+  description="Tabla de perfil de Pago tarjeta de credito",
+  labels=[("capa", "bronce"), ("tipo", "desarrollo")]
 );
 
 #ds_b_dwh_cap_brc
 
-CREATE OR REPLACE TABLE `ds_b_dwh_cap_brc.altchequesfact_opt`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_dwh_cap_brc.altchequesfact_opt`
 (
   cuenta STRING(19) OPTIONS(description="Cuenta de cheques, llave única en sistema Altamira"),
   fechaultmov DATE OPTIONS(description=" Fecha del último movimiento"),
-  pdimcliente NUMERIC(9) OPTIONS(description="Llave foránea (subrogada) de la dimensión Cliente, la interfase contiene el campo CLAVE_CLIENTE con el valor del Cliente Altamira"),
-  pdimproducto NUMERIC(9) OPTIONS(description="Llave foránea (subrogada) de la dimensión Producto conformada por aplicativo"),
+  pdimcliente NUMERIC(9) OPTIONS(description="Llave foranea (subrogada) de la dimensión Cliente, la interfase contiene el campo CLAVE_CLIENTE con el valor del Cliente Altamira"),
+  pdimproducto NUMERIC(9) OPTIONS(description="Llave foranea (subrogada) de la dimensión Producto conformada por aplicativo"),
   pdimtiempo DATE OPTIONS(description="Corresponde a la fecha del registro"),
   saldodisval NUMERIC(17, 2) OPTIONS(description="Saldo disponible al cierre del día valorizado")
 )
 PARTITION BY DATE_TRUNC(pdimtiempo, MONTH)
 OPTIONS(
-description="Tabla de Hechos de Créditos APOLO, contiene saldos financieros y contables por Línea y Crédito",
-labels=[("capa","bronce")]
+  description="Tabla de Hechos de Créditos APOLO, contiene saldos financieros y contables por Línea y Crédito",
+  labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
 
 #ds_b_dwh_cat_brc
 
-CREATE OR REPLACE TABLE `ds_b_dwh_cat_brc.segmentocliendim_opt`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_dwh_cat_brc.segmentocliendim_opt`
 (
   pdimsegmento NUMERIC(9) OPTIONS(description="Llave subrogada primaria de la tabla SegmentoDim"),
   bancagrup STRING(20) OPTIONS(description="Clave de Banca o Área de Negocio (ya no está en uso)"),
@@ -350,43 +350,40 @@ CREATE OR REPLACE TABLE `ds_b_dwh_cat_brc.segmentocliendim_opt`
   subsegmento NUMERIC(9) OPTIONS(description="Clave de subsegmento (ya no está en uso)")
 )
 OPTIONS(
-description="Tabla de catálogo que contiene los atributos de la relación Cliente - Segmento",
-labels=[("capa","bronce")]
+  description="Tabla de catálogo que contiene los atributos de la relacion Cliente - Segmento",
+  labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
 
 
 #ds_b_dwh_cli_brc
-CREATE OR REPLACE TABLE `ds_b_dwh_cli_brc.altclientedim_opt`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_dwh_cli_brc.altclientedim_opt`
 (
-  numerocif STRING    OPTIONS(description="Número de archivo de información del cliente"),
-  pdimcliente NUMERIC OPTIONS(description="Llave de la dimensión AltClienteDim"),
-  tipoperclav NUMERIC OPTIONS(description="Identificador de tipo de personalidad jurídica"),
-  aniosresdom STRING  OPTIONS(description="Residencia Casa Año"),
-  sexo STRING         OPTIONS(description="Código de género"),
-  estadociv STRING    OPTIONS(description="Estado civil"),
-  nivelestclav NUMERIC OPTIONS(description="Código de nivel educativo"),
-  estadoclav NUMERIC   OPTIONS(description="Código del estado"),
-  ocupacionpmclav NUMERIC OPTIONS(description="Código de la industria"),
-  ocupacionpfclav NUMERIC OPTIONS(description="Código de profesión"),
-  codigopos STRING     OPTIONS(description="Código postal del domicilio del cliente")
-)
-OPTIONS(
-labels=[("capa","bronce")]
+  numerocif STRING,
+  pdimcliente NUMERIC,
+  tipoperclav NUMERIC,
+  aniosresdom STRING,
+  sexo STRING,
+  estadociv STRING,
+  nivelestclav NUMERIC,
+  estadoclav NUMERIC,
+  ocupacionpmclav NUMERIC,
+  ocupacionpfclav NUMERIC,
+  codigopos STRING
 );
 
 
 #  ds_b_rie_brc
 
-CREATE OR REPLACE TABLE `ds_b_rie_brc.crm_base_ingresos_opt`
+CREATE TABLE `bnt-lakehouse-brc-pro.ds_b_rie_brc.crm_base_ingresos_opt`
 (
   ing_mensual FLOAT64 OPTIONS(description="Ingreso mensual estimado productivo"),
   sic NUMERIC(13) OPTIONS(description="Número de cliente"),
   metodo STRING(20) OPTIONS(description="Método con el cual fue calculado el ingreso"),
-  retrospectivo NUMERIC(6) OPTIONS(description="1: Si la estimación de ingresos es Retrospectivo, hace 12 meses. 0: Si la estimación se hizo con base a información reciente."),
+  retrospectivo NUMERIC(6) OPTIONS(description="1: Si la estimación de ingresos es Retrospectivo, hace 12 meses, 0: Si la estimación se hizo con base a información reciente."),
   fecha_informacion DATE OPTIONS(description="Fecha de información")
 )
 PARTITION BY DATE_TRUNC(fecha_informacion, MONTH)
 OPTIONS(
-  description="Tabla de Cliente-Ingresos. Es el estimador de la base de ingresos",
-  labels=[("capa","bronce")]
+  description="Tabla de Cliente-Ingresos.Es el estimador de la base de ingresos",
+  labels=[("capa", "bronce"), ("tipo", "produccion")]
 );
