@@ -1,17 +1,6 @@
 #bnt-lakehouse-core-pro
 #Tablas
 #bitacora
-CREATE OR REPLACE TABLE `bitacora.catalogo_insumos`
-(
-  id_tabla INT64,
-  nombre_modelo STRING,
-  nombre_landing_zone STRING,
-  nombre_bronce STRING,
-  nombre_plata STRING
-)OPTIONS(
-  description="Tabla de Fugas Abandono Hipotecario",
-  labels=[("capa", "core")]
-);
 
 CREATE OR REPLACE TABLE `bitacora.validacion_insumos`
 (
@@ -20,7 +9,7 @@ CREATE OR REPLACE TABLE `bitacora.validacion_insumos`
   reproceso STRING,
   estatus STRING
 )OPTIONS(
-  description="Tabla de Fugas Abandono Hipotecario",
+  description="Tabla de validacion de ingestas de insumos",
   labels=[("capa", "core")]
 );
 
@@ -37,7 +26,7 @@ CREATE OR REPLACE TABLE `ds_bitacora.t_ejecuciones_composer`
   fecha_particion DATE,
   id_re_run INT64
 )OPTIONS(
-  description="Tabla de Fugas Abandono Hipotecario",
+  description="Tabla de registro de ejecuciones de composer",
   labels=[("capa", "core")]
 );
 
