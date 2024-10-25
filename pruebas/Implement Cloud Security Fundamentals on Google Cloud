@@ -17,4 +17,20 @@ includedPermissions:
 - storage.objects.create
 EOF_END
 
+gcloud iam roles create $CUSTOM_SECURIY_ROLE --project $DEVSHELL_PROJECT_ID --file role-definition.yaml
+
+Task 2: Create a Service Account
+gcloud iam service-accounts create $SERVICE_ACCOUNT --display-name "Orca Private Cluster Service Account"
+
+
+
+
+
+
+
+
+
+
+
+
 
