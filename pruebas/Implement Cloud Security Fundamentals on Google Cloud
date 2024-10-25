@@ -1,10 +1,17 @@
+### **Export Variables:**
+
+```bash
 export CUSTOM_SECURIY_ROLE=[your_custom_security_role]
 export SERVICE_ACCOUNT=[your_service_account]
 export CLUSTER_NAME=[your_cluster_name]
 export ZONE=[your_zone]
+```
 
-Task 1: Create a Custom Security Role
+### **Task 1: Create a Custom Security Role**
+```bash
 gcloud config set compute/zone $ZONE
+```
+
 cat > role-definition.yaml <<EOF_END
 title: "$CUSTOM_SECURIY_ROLE"
 description: "Permissions"
