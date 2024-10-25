@@ -1,0 +1,30 @@
+### **Export Variables:**
+
+```bash
+export CUSTOM_SECURIY_ROLE=[your_custom_security_role]
+export SERVICE_ACCOUNT=[your_service_account]
+export CLUSTER_NAME=[your_cluster_name]
+export ZONE=[your_zone]
+```
+
+### **Task 1: Create a Custom Security Role**
+```bash
+gcloud config set compute/zone $ZONE
+```
+
+cat > role-definition.yaml <<EOF_END
+title: "$CUSTOM_SECURIY_ROLE"
+description: "Permissions"
+stage: "ALPHA"
+includedPermissions:
+- storage.buckets.get
+- storage.objects.get
+- storage.objects.list
+- storage.objects.update
+- storage.objects.create
+EOF_END
+
+gcloud iam roles create $CUSTOM_SECURIY_ROLE --project $DEVSHELL_PROJECT_ID --file role-definition.yaml
+
+Task 2: Create a Service Account
+gcloud iam service-accounts create $SERVICE_ACCOUNT --display-name "Orca Private Cluster Service Account"
