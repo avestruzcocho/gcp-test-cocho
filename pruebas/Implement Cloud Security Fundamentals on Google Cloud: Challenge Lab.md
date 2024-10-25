@@ -56,6 +56,15 @@ gcloud compute ssh --zone "$ZONE" "orca-jumphost" --project "$DEVSHELL_PROJECT_I
 ```
 
 
+### **Tips and Tricks**
+Tip 1: Use the gke-gcloud-auth-plugin for kubectl commands.
 
+```bash
+sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
+echo "export USE_GKE_GCLOUD_AUTH_PLUGIN=True" >> ~/.bashrc
+source ~/.bashrc
+gcloud container clusters get-credentials <your cluster name> --internal-ip --project=<project ID> --zone <cluster zone>
+```
+Tip 2: Use a /32 netmask for the internal IP address of the orca-jumphost.
 
-
+Tip 3: Connect to the private cluster using a jumphost or proxy within the same VPC.
