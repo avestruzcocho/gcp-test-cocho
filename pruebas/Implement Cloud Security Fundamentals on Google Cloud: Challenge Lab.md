@@ -12,6 +12,7 @@ export ZONE=[your_zone]
 gcloud config set compute/zone $ZONE
 ```
 
+```bash
 cat > role-definition.yaml <<EOF_END
 title: "$CUSTOM_SECURIY_ROLE"
 description: "Permissions"
@@ -23,8 +24,12 @@ includedPermissions:
 - storage.objects.update
 - storage.objects.create
 EOF_END
-
+```
+```bash
 gcloud iam roles create $CUSTOM_SECURIY_ROLE --project $DEVSHELL_PROJECT_ID --file role-definition.yaml
+```
 
-Task 2: Create a Service Account
+### **Task 2: Create a Service Account**
+```bash
 gcloud iam service-accounts create $SERVICE_ACCOUNT --display-name "Orca Private Cluster Service Account"
+```
