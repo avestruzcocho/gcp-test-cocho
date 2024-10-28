@@ -10,6 +10,12 @@ gcloud compute networks subnets create managementsubnet-1 --project=qwiklabs-gcp
 
 ```bash
 gcloud compute networks create privatenet --subnet-mode=custom
+
+gcloud compute networks subnets create privatesubnet-1 --network=privatenet --region=us-west1 --range=172.16.0.0/24
+
+gcloud compute networks subnets create privatesubnet-2 --network=privatenet --region=europe-west1 --range=172.20.0.0/20
+
 ```
+
 
 ### **Task 2. Create VM Instances**
