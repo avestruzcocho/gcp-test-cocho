@@ -6,7 +6,7 @@ gcloud compute networks create managementnet --project=qwiklabs-gcp-04-10e0bfc4a
 ```bash
 gcloud compute networks subnets create managementsubnet-1 --project=qwiklabs-gcp-04-10e0bfc4aa8f --description=subred --range=10.130.0.0/20 --stack-type=IPV4_ONLY --network=managementnet --region=us-west1
 ```
-## Create the privatenet network 
+#### Create the privatenet network 
 
 ```bash
 gcloud compute networks create privatenet --subnet-mode=custom
