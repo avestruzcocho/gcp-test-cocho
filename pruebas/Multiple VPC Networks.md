@@ -15,6 +15,8 @@ gcloud compute networks subnets create privatesubnet-1 --network=privatenet --re
 
 gcloud compute networks subnets create privatesubnet-2 --network=privatenet --region=europe-west1 --range=172.20.0.0/20
 
+gcloud compute --project=qwiklabs-gcp-04-10e0bfc4aa8f firewall-rules create managementnet-allow-icmp-ssh-rdp --direction=INGRESS --priority=1000 --network=managementnet --action=ALLOW --rules=tcp:22,tcp:3389 --source-ranges=0.0.0.0/0
+
 ```
 
 
