@@ -20,9 +20,9 @@ Tips and tricks:
 ### **Export Variables:**
 
 ```bash
-export CUSTOM_SECURIY_ROLE=[your_custom_security_role]
-export SERVICE_ACCOUNT=[your_service_account]
-export CLUSTER_NAME=[your_cluster_name]
+export SSH_IAP_NETWORK_TAG=[your_IAP]
+export SSH_INTERNAL_NETWORK_TAG=[your_Internal]
+export HTTP_NETWORK_TAG=[your_http]
 export ZONE=[your_zone]
 ```
 ## Solving tasks
@@ -46,7 +46,7 @@ gcloud compute firewall-rules delete open-access
 * Make sure you replace <SSH IAP network tag> with the tag provided on the Left Pane.
 
 ```yaml
-gcloud compute firewall-rules create <SSH IAP network tag> --allow=tcp:22 --source-ranges 35.235.240.0/20 --target-tags <SSH IAP network tag> --network acme-vpc
+gcloud compute firewall-rules create $SSH_IAP_NETWORK_TAG --allow=tcp:22 --source-ranges 35.235.240.0/20 --target-tags <SSH IAP network tag> --network acme-vpc
 
 gcloud compute instances add-tags bastion --tags=<SSH IAP network tag> --zone=us-central1-b
 ```
