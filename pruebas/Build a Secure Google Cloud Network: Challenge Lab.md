@@ -17,6 +17,14 @@ Tips and tricks:
 - Be specific and limit the size of the VPC firewall rule source ranges.
 - Overly permissive permissions will not be marked correct.
 
+### **Export Variables:**
+
+```bash
+export CUSTOM_SECURIY_ROLE=[your_custom_security_role]
+export SERVICE_ACCOUNT=[your_service_account]
+export CLUSTER_NAME=[your_cluster_name]
+export ZONE=[your_zone]
+```
 ## Solving tasks
 
 ### Task 1: Check the firewall rules. Remove the overly permissive rules.
