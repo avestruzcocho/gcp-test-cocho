@@ -6,7 +6,7 @@ gcloud services enable \
   datacatalog.googleapis.com
 ```
 ```bash
-export REGION=
+export REGION=us-east1
 export PROJECT_ID=$(gcloud config get-value project)
 gcloud config set compute/region $REGION
 ```
@@ -22,7 +22,7 @@ gcloud dataplex lakes create customer-engagements \
 
 ```
 
-### **Task 2.Create and attach a Cloud Storage bucket to the zone***
+### **Task 2.Create and attach a Cloud Storage bucket to the zone**
 
 ```bash
 t2
